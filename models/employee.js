@@ -15,17 +15,10 @@ module.exports = function(sequelize, DataTypes) {
       },
     },
     birthday: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [5],
-      },
-    },
-    postion: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -36,16 +29,36 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
-    technical_skills: {
+
+    orientationComplete: {
+      type: DataTypes.DATEONLY,
+    },
+    compliance_trainingComplete: {
+      type: DataTypes.DATEONLY,
+    },
+  });
+
+  const Hobbies = sequelize.define("Hobbies", {
+    hobby: {
       type: DataTypes.STRING,
     },
-    orientation: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
+  });
+
+  const Allergies = sequelize.define("Allergies", {
+    allergy: {
+      type: DataTypes.STRING,
     },
-    compliance_training: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
+  });
+
+  const Position = sequelize.define("Position", {
+    position: {
+      type: DataTypes.STRING,
+    },
+  });
+
+  const Skills = sequelize.define("Skills", {
+    skill: {
+      type: DataTypes.STRING,
     },
   });
 };
