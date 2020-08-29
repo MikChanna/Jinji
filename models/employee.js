@@ -76,7 +76,7 @@ module.exports = function(sequelize, DataTypes) {
   ]).then(() => { // Notice: There are no arguments here, as of right now you'll have to...
     return Employee.findAll();
   }).then(employees => {
-    console.log(employees) // ... in order to get the array of employees
+    console.log(employees); // ... in order to get the array of employees
   });
 
 
