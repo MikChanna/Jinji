@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS jinji; 
+CREATE DATABASE jinji;
+USE jinji;
