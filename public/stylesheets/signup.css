@@ -1,0 +1,8 @@
+*,
+html,
+body,
+.navbar-default,
+h2 {
+    background: dodgerblue;
+    color: ghostwhite;
+}
