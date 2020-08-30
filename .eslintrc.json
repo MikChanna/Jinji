@@ -27,7 +27,6 @@
     "no-multi-spaces": "error",
     "no-unreachable": "error",
     "no-var": "error",
-    "prefer-arrow-callback": "error",
     "prefer-const": "error",
     "semi": ["error", "always"],
     "vars-on-top": "error",
