@@ -50,4 +50,83 @@ module.exports = function(app) {
       });
     }
   });
+
+  // Route for getting all information from Employee table 
+  app.get("/api/employees", function(req, res) {
+    db.Todo.findAll({}).then(function(dbEmployee) {
+      res.json(dbEmployee);
+    });
+  });
+
+  // POST route for saving a new todo
+  app.post("/api/employees", function(req, res) {
+    // create takes an argument of an object describing the item we want to
+    // insert into our table. This would be all the employee data we pull from the form 
+    db.Todo.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name, 
+      birthday: req.body.birthday, 
+      email: req.body.email, 
+      orientation: req.body.orientation, 
+      compliance_training: req.body.compliance_training
+    }).then(function(dbEmployee) {
+      res.json(dbEmployee);
+    })
+      .catch(function(err) {
+        res.json(err);
+      });
+  });
+
+  // PUT route for updating an employee. We can get the updated employee data from req.body
+  app.put("/api/employees", function(req, res) {
+
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Employee.update({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name, 
+      birthday: req.body.birthday, 
+      email: req.body.email, 
+      orientation: req.body.orientation, 
+      compliance_training: req.body.compliance_training
+    }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbEmployee) {
+      res.json(dbEmployee);
+    })
+      .catch(function(err) {
+        res.json(err);
+      });
+  });
+
+  // Route for getting all information from Employee table 
+  app.get("/api/employees/:id", function(req, res) {
+    db.Employee.findOne({
+
+    }, {
+      where: { 
+        id:req.body.id
+      }
+    }).then(function(dbEmployee){ 
+      res.json(dbEmployee); 
+    }).catch(function(err){ 
+      res.json(err); 
+    });
+  });
+
+
+  // DELETE route for deleting an employee. 
+  app.delete("/api/employees/:id", function(req, res) {
+    db.Employee.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbEmployee) {
+      res.json(dbEmployee);
+    });
+
+  });
+
 };
