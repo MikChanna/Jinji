@@ -3,30 +3,30 @@ const LocalStrategy = require("passport-local").Strategy;
 
 const db = require("../models");
 
-// Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
+// Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password  (setting up user authentication)
 passport.use(
   new LocalStrategy(
     // Our user will sign in using an email, rather than a "username"
     {
-      usernameField: "email"
+      usernameField: "email",
     },
-    (email, password, done) => {
+    function(email, password, done) {
       // When a user tries to sign in this code runs
       db.User.findOne({
         where: {
-          email: email
-        }
-      }).then(dbUser => {
+          email: email,
+        },
+      }).then(function(dbUser) {
         // If there's no user with the given email
         if (!dbUser) {
           return done(null, false, {
-            message: "Incorrect email."
+            message: "Incorrect email.",
           });
         }
         // If there is a user with the given email, but the password the user gives us is incorrect
         else if (!dbUser.validPassword(password)) {
           return done(null, false, {
-            message: "Incorrect password."
+            message: "Incorrect password.",
           });
         }
         // If none of the above, return the user
@@ -39,11 +39,13 @@ passport.use(
 // In order to help keep authentication state across HTTP requests,
 // Sequelize needs to serialize and deserialize the user
 // Just consider this part boilerplate needed to make it all work
-passport.serializeUser((user, cb) => {
+// Passport will maintain persistent login sessions. In order for persistent sessions to work, the authenticated user must be serialized to the session, and deserialized when subsequent requests are made.
+// Passport does not impose any restrictions on how your user records are stored. Instead, you provide functions to Passport which implements the necessary serialization and deserialization logic. In a typical application, this will be as simple as serializing the user ID, and finding the user by ID when deserializing.
+passport.serializeUser(function(user, cb) {
   cb(null, user);
 });
 
-passport.deserializeUser((obj, cb) => {
+passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 });
 
