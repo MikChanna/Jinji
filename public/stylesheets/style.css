@@ -39,3 +39,7 @@ button {
 input {
   margin: 5px;
 }
+
+.small {
+  font-size: 10px;
+}

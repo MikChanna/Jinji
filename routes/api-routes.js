@@ -49,16 +49,16 @@ module.exports = function (app) {
 
   // Route for getting all information from Employee table
   app.get("/api/employees", function (req, res) {
-    db.Todo.findAll({}).then(function (dbEmployee) {
+    db.Employee.findAll({}).then(function (dbEmployee) {
       res.json(dbEmployee);
     });
   });
 
-  // POST route for saving a new todo
+  // POST route for saving a new employee
   app.post("/api/employees", function (req, res) {
     // create takes an argument of an object describing the item we want to
     // insert into our table. This would be all the employee data we pull from the form
-    db.Todo.create({
+    db.Employee.create({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       birthday: req.body.birthday,
