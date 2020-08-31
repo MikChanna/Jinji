@@ -1,5 +1,5 @@
 * {
-  background: #1E90FF;
+  background: #1e90ff;
 }
 
 .container {
@@ -21,13 +21,14 @@ section {
 
 p {
   color: ghostwhite;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 7rem;
 }
 
 button {
   margin: 5px;
-  background: #00BFFF;
+  background: #00bfff;
   border-color: ghostwhite;
 }
 
