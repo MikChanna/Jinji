@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Passport Authentication</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Milligram CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+  <link href="./stylesheets/employee_new.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/logout">
+        Logout
+      </a>
+    </div>
+  </div>
+</nav>
+  <div class="container">
+    <p>Jinji 人事</p>
+    <form>
+        First Name <input>
+        Last Name <input>
+        Birthday <input type="date" min="1900-01-01" max="2018-12-31">
+        Email <input>
+        Hire Date <input type="date" min="1900-01-01" max="2020-12-31">
+        Orientation completion date <input type="date" min="1900-01-01" max="2020-12-31">
+        Compliance training completion date <input type="date" min="1900-01-01" max="2020-12-31">
+        <div class="inline"></div>
+            <span id="allergies">
+                Allergies:<br>
+                <input type="checkbox">Lactose<br>
+                <input type="checkbox">Gluten<br>        
+                <input type="checkbox">Nuts<br>      
+                <input type="checkbox">Soy<br> 
+            </span>
+            <span id="hobbies">
+                Hobbies:<br>
+                <input type="checkbox">Soccer<br>
+                <input type="checkbox">Beer<br>        
+                <input type="checkbox">Knitting<br>      
+                <input type="checkbox">Photography<br> 
+            </span>
+        </div>
+        <button class="button button-outline">Save</button>
+    </form>
+  </div>
+</body>
+
+</html>
