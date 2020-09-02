@@ -5,7 +5,16 @@ $(document).ready(function() {
     $(".member-name").text(data.email);
   });
 
-  $.get("/api/employees").then(function(data){ 
-    console.log(data); 
+  $.get("/api/employees").then(function(data) {
+    console.log(data);
+  });
+
+  const addEmployee = $(".addEmployee");
+
+  // When the signup button is clicked, we validate the email and password are not blank
+  addEmployee.on("click", function(event) {
+    event.preventDefault();
+    console.log("You're on a new page");
+    window.location.replace("/addemployee");
   });
 });
