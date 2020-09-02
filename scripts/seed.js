@@ -3,22 +3,23 @@ const db = require("../models");
 db.sequelize.sync({ force: true }).then(() => {
   employeeSeeds.forEach((item) => {
     db.Employee.create(item);
+    console.log("employees created");
   });
 });
 
 // // will add in when we know what the seed data would look like for this
-// db.sequelize.sync({force:true}).then(()=>{
-//     allergySeeds.forEach((item)=>{
-//         db.Allergies.create(item);
-//     })
-// })
+// db.sequelize.sync({ force: true }).then(() => {
+//   allergySeeds.forEach((item) => {
+//     db.Allergies.create(item);
+//   });
+// });
 
 // // will add in when we know what the see data would look like for this
-// db.sequelize.sync({force:true}).then(()=>{
-//     hobbySeeds.forEach((item)=>{
-//         db.Hobbies.create(item);
-//     })
-// })
+// db.sequelize.sync({ force: true }).then(() => {
+//   hobbySeeds.forEach((item) => {
+//     db.Hobbies.create(item);
+//   });
+// });
 
 const employeeSeeds = [
   {

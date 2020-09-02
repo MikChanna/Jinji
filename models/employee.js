@@ -37,7 +37,19 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATEONLY,
     },
   });
+
+  Employee.associate = function(models) {
+    Employee.belongsToMany(models.Hobbies, {
+      onDelete: "cascade",
+    });
+
+  Employee.associate = function(models) {
+     Employee.belongsToMany(models.Allergies, {
+      onDelete: "cascade",
+   });
+
   return Employee;
+  };
 
   //   const Position = sequelize.define("Position", {
   //     position: {
