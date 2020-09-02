@@ -4,5 +4,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
     },
   });
+
+  // Hobbies.associate = function(models) {
+  //   Hobbies.belongsToMany(models.Employee, {
+  //     foreignKey: {
+  //       allowNull: false,
+  //     },
+  //   });
+  // };
+
   return Hobbies;
 };
