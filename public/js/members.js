@@ -7,7 +7,16 @@ $(document).ready(function() {
 
   $.get("/api/employees").then(function(data) {
     console.log(data);
-    renderAllEmployeeData(data);
+    renderAllEmployeeData();
+  });
+
+  const addEmployee = $(".addEmployee");
+
+  // When the signup button is clicked, we validate the email and password are not blank
+  addEmployee.on("click", function(event) {
+    event.preventDefault();
+    console.log("You're on a new page");
+    window.location.replace("/addemployee");
   });
 
   function renderAllEmployeeData(data) {
