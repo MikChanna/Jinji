@@ -7,7 +7,7 @@ $(document).ready(function() {
 
   $.get("/api/employees").then(function(data) {
     console.log(data);
-    renderAllEmployeeData();
+    renderAllEmployeeData(data);
   });
 
   const addEmployee = $(".addEmployee");

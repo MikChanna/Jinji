@@ -40,10 +40,15 @@ input {
   margin: 5px;
 }
 
-.small {
+.small,
+.member-name {
   font-size: 10px;
 }
 
 table {
   color: white;
+}
+
+tbody {
+  font-size: 14px;
 }

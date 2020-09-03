@@ -38,17 +38,16 @@ module.exports = function(sequelize, DataTypes) {
     },
   });
 
-  // Employee.associate = function(models) {
-  //   Employee.belongsToMany(models.Hobbies, {
-  //     onDelete: "cascade",
-  //   });
+  Employee.associate = function(models) {
+    models.Employee.belongsToMany(models.Allergies, {
+      through: "allergyAssociation",
+    });
+  };
 
-  //   Employee.associate = function(models) {
-  //     Employee.belongsToMany(models.Allergies, {
-  //       onDelete: "cascade",
-  //     });
-
+  Employee.associate = function(models) {
+    models.Employee.belongsToMany(models.Hobbies, {
+      through: "allergyAssociation",
+    });
+  };
   return Employee;
-  // };
-  // };
 };
