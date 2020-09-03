@@ -40,4 +40,40 @@ $(document).ready(function() {
     renderAllHTML += `</tbody></table>`;
     $("#search-results").append(renderAllHTML);
   }
+
+  // get hobbies from table and render to page.
+  const spanHobbies = $("#hobbies");
+
+  $.get("/api/hobbies").then(function(data) {
+    console.log(data);
+    renderHobbies(data);
+  });
+
+  function renderHobbies(data) {
+    console.log(data);
+
+    data.forEach(function(data) {
+      const hobbyItem = `
+        <input type = "checkbox">${data.hobby}<br>`;
+      spanHobbies.append(hobbyItem);
+    });
+  }
+
+  // get allergies from table and render to page.
+  const spanAllergies = $("#allergies");
+
+  $.get("/api/allergies").then(function(data) {
+    console.log(data);
+    renderAllergies(data);
+  });
+
+  function renderAllergies(data) {
+    console.log(data);
+
+    data.forEach(function(data) {
+      const allergyItem = `
+          <input type = "checkbox">${data.allergy}<br>`;
+      spanAllergies.append(allergyItem);
+    });
+  }
 });

@@ -5,21 +5,15 @@ db.sequelize.sync({ force: true }).then(() => {
     db.Employee.create(item);
     console.log("employees created");
   });
+  hobbySeeds.forEach((item) => {
+    db.Hobbies.create(item);
+    console.log("hobbies created");
+  });
+  allergySeeds.forEach((item) => {
+    db.Allergies.create(item);
+    console.log("allergies created");
+  });
 });
-
-// // will add in when we know what the seed data would look like for this
-// db.sequelize.sync({ force: true }).then(() => {
-//   allergySeeds.forEach((item) => {
-//     db.Allergies.create(item);
-//   });
-// });
-
-// // will add in when we know what the see data would look like for this
-// db.sequelize.sync({ force: true }).then(() => {
-//   hobbySeeds.forEach((item) => {
-//     db.Hobbies.create(item);
-//   });
-// });
 
 const employeeSeeds = [
   {
@@ -96,5 +90,48 @@ const employeeSeeds = [
   },
 ];
 
-// const allergySeeds= [];
-// const hobbySeeds = [];
+const hobbySeeds = [
+  {
+    hobby: "Reading",
+    createdAt: 20200902,
+    updatedAt: 20200902,
+  },
+  {
+    hobby: "Gaming",
+    createdAt: 20200902,
+    updatedAt: 20200902,
+  },
+  {
+    hobby: "Skiing",
+    createdAt: 20200902,
+    updatedAt: 20200902,
+  },
+  {
+    hobby: "Painting",
+    createdAt: 20200902,
+    updatedAt: 20200902,
+  },
+];
+
+const allergySeeds = [
+  {
+    allergy: "Nut",
+    createdAt: 20200902,
+    updatedAt: 20200902,
+  },
+  {
+    allergy: "Soy",
+    createdAt: 20200902,
+    updatedAt: 20200902,
+  },
+  {
+    allergy: "Gluten",
+    createdAt: 20200902,
+    updatedAt: 20200902,
+  },
+  {
+    allergy: "Lactose",
+    createdAt: 20200902,
+    updatedAt: 20200902,
+  },
+];
