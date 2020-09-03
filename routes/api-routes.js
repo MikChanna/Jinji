@@ -66,8 +66,8 @@ module.exports = function(app) {
       last_name: req.body.last_name,
       birthday: req.body.birthday,
       email: req.body.email,
-      orientation: req.body.orientation,
-      compliance_training: req.body.compliance_training,
+      orientationComplete: req.body.orientationComplete,
+      compliance_trainingComplete: req.body.compliance_trainingComplete,
     })
       .then(function(dbEmployee) {
         res.json(dbEmployee);
