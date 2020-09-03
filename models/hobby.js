@@ -5,13 +5,10 @@ module.exports = function(sequelize, DataTypes) {
     },
   });
 
-  // Hobbies.associate = function(models) {
-  //   Hobbies.belongsToMany(models.Employee, {
-  //     foreignKey: {
-  //       allowNull: false,
-  //     },
-  //   });
-  // };
-
+  Hobbies.associate = function(models) {
+    models.Hobbies.belongsToMany(models.Employee, {
+      through: "allergyAssociation",
+    });
+  };
   return Hobbies;
 };
