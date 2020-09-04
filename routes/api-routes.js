@@ -132,4 +132,18 @@ module.exports = function(app) {
       res.json(dbEmployee);
     });
   });
+
+  // Route for getting all information Hobby names
+  app.get("/api/hobbies", function(req, res) {
+    db.Hobbies.findAll({}).then(function(dbHobby) {
+      res.json(dbHobby);
+    });
+  });
+
+  // Route for getting all information from allergies
+  app.get("/api/allergies", function(req, res) {
+    db.Allergies.findAll({}).then(function(dbAllergy) {
+      res.json(dbAllergy);
+    });
+  });
 };
