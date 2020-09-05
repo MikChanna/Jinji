@@ -59,13 +59,13 @@ module.exports = function(app) {
 
   // POST route for saving a new employee
   app.post("/api/employees", function(req, res) {
-    // create takes an argument of an object describing the item we want to
-    // insert into our table. This would be all the employee data we pull from the form
+    console.log(req);
     db.Employee.create({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       birthday: req.body.birthday,
       email: req.body.email,
+      hire_date: req.body.hire_date,
       orientationComplete: req.body.orientationComplete,
       compliance_trainingComplete: req.body.compliance_trainingComplete,
     })
