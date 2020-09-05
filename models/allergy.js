@@ -18,6 +18,7 @@ module.exports = function(sequelize, DataTypes) {
   Allergies.associate = function(models) {
     models.Allergies.belongsToMany(models.Employee, {
       through: "employeeAllergies",
+      foreignKey: "allergyID",
     });
   };
   return Allergies;
