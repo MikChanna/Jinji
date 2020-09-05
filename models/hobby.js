@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
   Hobbies.associate = function(models) {
     models.Hobbies.belongsToMany(models.Employee, {
       through: "employeeHobbies",
-      foreignKey: "allergyID",
+      as: "hobbyID",
     });
   };
   return Hobbies;
