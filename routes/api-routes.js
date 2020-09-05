@@ -66,6 +66,8 @@ module.exports = function(app) {
       last_name: req.body.last_name,
       birthday: req.body.birthday,
       email: req.body.email,
+      allergyID: req.body.allergyID,
+      hobbyID: req.body.hobbyID,
       orientationComplete: req.body.orientationComplete,
       compliance_trainingComplete: req.body.compliance_trainingComplete,
     })
@@ -87,6 +89,8 @@ module.exports = function(app) {
         last_name: req.body.last_name,
         birthday: req.body.birthday,
         email: req.body.email,
+        allergyID: req.body.allergyID,
+        hobbyID: req.body.hobbyID,
         orientation: req.body.orientation,
         compliance_training: req.body.compliance_training,
       },
