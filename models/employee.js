@@ -34,16 +34,16 @@ module.exports = function(sequelize, DataTypes) {
           len: [5],
         },
       },
-      allergyID: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        foreignKey: true,
-      },
-      hobbyID: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        foreignKey: true,
-      },
+      // allergyID: {
+      //   type: DataTypes.INTEGER,
+      //   allowNull: true,
+      //   foreignKey: true,
+      // },
+      // hobbyID: {
+      //   type: DataTypes.INTEGER,
+      //   allowNull: true,
+      //   foreignKey: true,
+      // },
       hire_date: {
         type: DataTypes.DATEONLY,
         allowNull: false,
