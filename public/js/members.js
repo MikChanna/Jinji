@@ -1,3 +1,5 @@
+var moment = require('moment'); // require
+
 $(document).ready(function() {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
@@ -40,6 +42,25 @@ $(document).ready(function() {
     renderAllHTML += `</tbody></table>`;
     $("#search-results").append(renderAllHTML);
   }
+
+  $(".viewMilestones").on("click", function(event){ 
+    event.preventDefault(); 
+    console.log("view milestones button clicked"); 
+    $.get("/api/employees").then(function(data) {
+      data.forEach(function(eachEmployee){ 
+        const splitBday = eachEmployee.birthday.split("-"); 
+        const bdayMonth = splitBday[2]; 
+        //can't figure out why thisMonthsBdays in line below is grayed out/unaccessible by the if statement 
+        const thisMonthsBdays = []; 
+        if (bdayMonth === moment.format(scope.date, 'MM')){ 
+          const thisMonthsBdays += employee; 
+        };
+      }); 
+    });
+    
+    let today = moment().format('YYYY-MM-DD'); 
+
+  });
 
   // get hobbies from table and render to page.
   const spanHobbies = $("#hobbies");
