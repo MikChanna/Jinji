@@ -1,4 +1,4 @@
-var moment = require('moment'); // require
+var moment = require("moment"); // require
 
 $(document).ready(function() {
   // This file just does a GET request to figure out which user is logged in
@@ -43,24 +43,40 @@ $(document).ready(function() {
     $("#search-results").append(renderAllHTML);
   }
 
-  $(".viewMilestones").on("click", function(event){ 
-    event.preventDefault(); 
-    console.log("view milestones button clicked"); 
+  $(".viewMilestones").on("click", function(event) {
+    event.preventDefault();
+    console.log("view milestones button clicked");
     $.get("/api/employees").then(function(data) {
-      data.forEach(function(eachEmployee){ 
-        const splitBday = eachEmployee.birthday.split("-"); 
-        const bdayMonth = splitBday[2]; 
-        //can't figure out why thisMonthsBdays in line below is grayed out/unaccessible by the if statement 
-        const thisMonthsBdays = []; 
-        if (bdayMonth === moment.format(scope.date, 'MM')){ 
-          const thisMonthsBdays += employee; 
-        };
-      }); 
-    });
-    
-    let today = moment().format('YYYY-MM-DD'); 
+      data.forEach(function(data) {
+        const splitBday = data.birthday.split("-");
+        const bdayMonth = splitBday[2];
+        //can't figure out why thisMonthsBdays in line below is grayed out/unaccessible by the if statement
+        const thisMonthsBdays = [];
+        if (bdayMonth === moment.format(scope.date, "MM")) {
+          thisMonthsBdays += employee;
+        }
 
+        renderThisMonthsBdays(thisMonthsBdays);
+      });
+    });
   });
+
+  function renderThisMonthsBdays(data) {
+    $("#search-results").empty();
+    console.log(data);
+    let bdayHTML = `<table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th></thead><tbody>`;
+    data.forEach(function(data) {
+      const tableRow = `<tr>
+          <th>${data.first_name}</th>
+          <th>${data.last_name}</th>
+          <th>${data.email}</th>
+          <th>${data.birthday}</th>
+        </tr>`;
+      bdayHTML += tableRow;
+    });
+    bdayHTML += `</tbody></table>`;
+    $("#search-results").append(bdayHTML);
+  }
 
   // get hobbies from table and render to page.
   const spanHobbies = $("#hobbies");
