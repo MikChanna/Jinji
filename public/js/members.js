@@ -49,7 +49,7 @@ $(document).ready(function() {
     console.log("view milestones button clicked");
     $.get("/api/employees").then(function(data) {
       console.log(data);
-      let thisMonthsBdays = [];
+      const thisMonthsBdays = [];
       data.forEach(function(employees) {
         const splitBday = employees.birthday.split("-");
         const bdayMonth = splitBday[1];
