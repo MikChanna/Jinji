@@ -72,6 +72,7 @@ $(document).ready(function() {
       food_preference: radiocheck(),
     })
       .then(function(data) {
+        window.location.replace("/members");
         console.log("api called to post new employee");
       })
       .catch(addEmployeeError);
