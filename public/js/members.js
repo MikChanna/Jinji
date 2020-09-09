@@ -50,39 +50,75 @@ $(document).ready(function() {
     $.get("/api/employees").then(function(data) {
       console.log(data);
       const thisMonthsBdays = [];
+      const thisMonthsWorkAnniversaries = [];
       data.forEach(function(employees) {
         const splitBday = employees.birthday.split("-");
+        const splitHire_Date = employees.hire_date.split("-");
+        const hireMonth = splitHire_Date[1];
         const bdayMonth = splitBday[1];
         const currentMonth = moment().format("MM");
         console.log(
           "current month is: " +
             currentMonth +
             " and bday month is: " +
-            bdayMonth
+            bdayMonth +
+            " and hire month is: " +
+            hireMonth
         );
         if (bdayMonth === currentMonth) {
           thisMonthsBdays.push(employees);
         }
+        if (hireMonth === currentMonth) {
+          thisMonthsWorkAnniversaries.push(employees);
+        }
       });
       renderThisMonthsBdays(thisMonthsBdays);
+      renderThisMonthsWorkAnniversaries(thisMonthsWorkAnniversaries);
     });
   });
 
   function renderThisMonthsBdays(data) {
     $("#search-results").empty();
     console.log(data);
-    let bdayHTML = `<br><h3>This month's birthdays</h5><br><table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th></thead><tbody>`;
+    let bdayHTML = `<br><h3>This month's birthdays</h5><br><table><thead><tr><th>First Name</th><th>Last Name</th><th>Birthday</th></thead><tbody>`;
     data.forEach(function(data) {
       const tableRow = `<tr>
           <th>${data.first_name}</th>
           <th>${data.last_name}</th>
-          <th>${data.email}</th>
           <th>${data.birthday}</th>
         </tr>`;
       bdayHTML += tableRow;
     });
     bdayHTML += `</tbody></table>`;
     $("#search-results").append(bdayHTML);
+  }
+
+  function renderThisMonthsWorkAnniversaries(data) {
+    console.log(data);
+    let anniversaryHTML = `<br><h3>This month's work anniversaries</h5>
+    <br><table><thead>
+    <tr><th>First Name</th>
+    <th>Last Name</th>
+    <th>Hire Date</th>
+    <th>Years Employed</th>
+    </thead><tbody>`;
+    data.forEach(function(data) {
+      const hireYear = data.hire_date.slice(0, 4);
+      const currentYear = moment().format("YYYY");
+      console.log(currentYear);
+      console.log(hireYear);
+      const yearsEmployed = currentYear - hireYear;
+      console.log(yearsEmployed);
+      const tableRow = `<tr>
+          <th>${data.first_name}</th>
+          <th>${data.last_name}</th>
+          <th>${data.hire_date}</th>
+          <th>${yearsEmployed}</th>
+        </tr>`;
+      anniversaryHTML += tableRow;
+    });
+    anniversaryHTML += `</tbody></table>`;
+    $("#search-results").append(anniversaryHTML);
   }
 
   // get hobbies from table and render to page.
