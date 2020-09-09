@@ -68,12 +68,15 @@ module.exports = function(app) {
       hire_date: req.body.hire_date,
       orientationComplete: req.body.orientationComplete,
       compliance_trainingComplete: req.body.compliance_trainingComplete,
+      food_preference: req.body.food_preference,
     })
-      .then(function(dbEmployee) {
-        res.json(dbEmployee);
+      .then(function(user) {
+        // user.setAllergies(1);
+        res.json(user);
       })
       .catch(function(err) {
         res.json(err);
+        console.log(err);
       });
   });
 
