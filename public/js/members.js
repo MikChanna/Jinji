@@ -103,10 +103,12 @@ $(document).ready(function() {
     <th>Years Employed</th>
     </thead><tbody>`;
     data.forEach(function(data) {
-      const hireMonthDay = data.hire_date.slice(5, 9);
-      const hireYear = data.hire_date.slice(0, 3);
+      const hireYear = data.hire_date.slice(0, 4);
       const currentYear = moment().format("YYYY");
-      const yearsEmployed = moment(currentYear).diff(hireYear, "years");
+      console.log(currentYear);
+      console.log(hireYear);
+      const yearsEmployed = currentYear - hireYear;
+      console.log(yearsEmployed);
       const tableRow = `<tr>
           <th>${data.first_name}</th>
           <th>${data.last_name}</th>
