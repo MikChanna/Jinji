@@ -11,6 +11,7 @@ $(document).ready(function() {
   });
 
   const addEmployee = $(".addEmployee");
+  const viewMilestones = $(".viewMilestones");
 
   // When the signup button is clicked, we validate the email and password are not blank
   addEmployee.on("click", function(event) {
@@ -19,6 +20,7 @@ $(document).ready(function() {
     window.location.replace("/addemployee");
   });
 
+  //loops through all employees in the database and prints them to the home page at members.html
   function renderAllEmployeeData(data) {
     console.log(data);
     let renderAllHTML = `<table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th>
@@ -39,6 +41,48 @@ $(document).ready(function() {
 
     renderAllHTML += `</tbody></table>`;
     $("#search-results").append(renderAllHTML);
+  }
+
+  // event listener for the view milestones button
+  viewMilestones.on("click", function(event) {
+    event.preventDefault();
+    console.log("view milestones button clicked");
+    $.get("/api/employees").then(function(data) {
+      console.log(data);
+      const thisMonthsBdays = [];
+      data.forEach(function(employees) {
+        const splitBday = employees.birthday.split("-");
+        const bdayMonth = splitBday[1];
+        const currentMonth = moment().format("MM");
+        console.log(
+          "current month is: " +
+            currentMonth +
+            " and bday month is: " +
+            bdayMonth
+        );
+        if (bdayMonth === currentMonth) {
+          thisMonthsBdays.push(employees);
+        }
+      });
+      renderThisMonthsBdays(thisMonthsBdays);
+    });
+  });
+
+  function renderThisMonthsBdays(data) {
+    $("#search-results").empty();
+    console.log(data);
+    let bdayHTML = `<br><h3>This month's birthdays</h5><br><table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th></thead><tbody>`;
+    data.forEach(function(data) {
+      const tableRow = `<tr>
+          <th>${data.first_name}</th>
+          <th>${data.last_name}</th>
+          <th>${data.email}</th>
+          <th>${data.birthday}</th>
+        </tr>`;
+      bdayHTML += tableRow;
+    });
+    bdayHTML += `</tbody></table>`;
+    $("#search-results").append(bdayHTML);
   }
 
   // get hobbies from table and render to page.
