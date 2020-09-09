@@ -27,6 +27,7 @@ const employeeSeeds = [
     hire_date: "2020-08-15",
     orientationComplete: "2020-08-20",
     compliance_trainingComplete: "2020-08-27",
+    food_preference: "No Preference",
   },
   {
     first_name: "Channa",
@@ -38,6 +39,7 @@ const employeeSeeds = [
     hire_date: "2019-08-01",
     orientationComplete: "2019-08-21",
     compliance_trainingComplete: "2019-09-01",
+    food_preference: "Vegan",
   },
   {
     first_name: "Patrick",
@@ -49,6 +51,7 @@ const employeeSeeds = [
     hire_date: "2018-02-26",
     orientationComplete: "2018-03-01",
     compliance_trainingComplete: "2018-04-21",
+    food_preference: "Vegetarian",
   },
   // {
   //   first_name: "Jane",

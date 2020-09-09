@@ -53,18 +53,27 @@ module.exports = function(sequelize, DataTypes) {
     compliance_trainingComplete: {
       type: DataTypes.DATEONLY,
     },
+    food_preference: {
+      type: DataTypes.STRING,
+    },
   });
 
-  // Employee.associate = function(models) {
-  //   Employee.belongsToMany(models.Allergies, {
-  //     through: "employeeAllergies",
-  //   });
-  // };
-  // Employee.associate = function(models) {
-  //   Employee.belongsToMany(models.Hobbies, {
-  //     through: "employeeHobbies",
-  //   });
-  // };
+  Employee.associate = function(models) {
+    Employee.belongsToMany(models.Allergies, {
+      through: "employeeAllergies",
+      as: "Allergies",
+      foreignKey: "allergyId",
+      otherKey: "employeeId",
+    });
+  };
+  Employee.associate = function(models) {
+    Employee.belongsToMany(models.Hobbies, {
+      through: "employeeHobbies",
+      as: "Hobbies",
+      foreignKey: "hobbyId",
+      otherKey: "employeeId",
+    });
+  };
 
   return Employee;
 };

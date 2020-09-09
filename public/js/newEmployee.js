@@ -58,7 +58,8 @@ $(document).ready(function() {
     email,
     hire_date,
     orientationComplete,
-    compliance_trainingComplete
+    compliance_trainingComplete,
+    food_preference
   ) {
     $.post("api/employees", {
       first_name: first_name,
@@ -68,6 +69,7 @@ $(document).ready(function() {
       hire_date: hire_date,
       orientationComplete: orientationComplete,
       compliance_trainingComplete: compliance_trainingComplete,
+      food_preference: radiocheck(),
     })
       .then(function(data) {
         console.log("api called to post new employee");
@@ -77,5 +79,13 @@ $(document).ready(function() {
 
   function addEmployeeError(err) {
     console.log(err.responseJSON);
+  }
+
+  function radiocheck() {
+    const foodpref = $("input[name='food']:checked").val();
+    if (foodpref) {
+      console.log(foodpref);
+      return foodpref;
+    }
   }
 });

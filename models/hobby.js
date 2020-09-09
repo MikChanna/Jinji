@@ -19,7 +19,9 @@ module.exports = function(sequelize, DataTypes) {
   Hobbies.associate = function(models) {
     models.Hobbies.belongsToMany(models.Employee, {
       through: "employeeHobbies",
-      as: "hobbyID",
+      as: "Employee",
+      foreignKey: "employeeId",
+      otherKey: "hobbyId",
     });
   };
   return Hobbies;
