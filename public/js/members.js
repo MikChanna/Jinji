@@ -1,5 +1,3 @@
-var moment = require("moment"); // require
-
 $(document).ready(function() {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
@@ -13,6 +11,7 @@ $(document).ready(function() {
   });
 
   const addEmployee = $(".addEmployee");
+  const viewMilestones = $(".viewMilestones");
 
   // When the signup button is clicked, we validate the email and password are not blank
   addEmployee.on("click", function(event) {
@@ -21,6 +20,7 @@ $(document).ready(function() {
     window.location.replace("/addemployee");
   });
 
+  //loops through all employees in the database and prints them to the home page at members.html
   function renderAllEmployeeData(data) {
     console.log(data);
     let renderAllHTML = `<table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th>
@@ -43,28 +43,35 @@ $(document).ready(function() {
     $("#search-results").append(renderAllHTML);
   }
 
-  $(".viewMilestones").on("click", function(event) {
+  // event listener for the view milestones button
+  viewMilestones.on("click", function(event) {
     event.preventDefault();
     console.log("view milestones button clicked");
     $.get("/api/employees").then(function(data) {
-      data.forEach(function(data) {
-        const splitBday = data.birthday.split("-");
-        const bdayMonth = splitBday[2];
-        //can't figure out why thisMonthsBdays in line below is grayed out/unaccessible by the if statement
-        const thisMonthsBdays = [];
-        if (bdayMonth === moment.format(scope.date, "MM")) {
-          thisMonthsBdays += employee;
+      console.log(data);
+      let thisMonthsBdays = [];
+      data.forEach(function(employees) {
+        const splitBday = employees.birthday.split("-");
+        const bdayMonth = splitBday[1];
+        const currentMonth = moment().format("MM");
+        console.log(
+          "current month is: " +
+            currentMonth +
+            " and bday month is: " +
+            bdayMonth
+        );
+        if (bdayMonth === currentMonth) {
+          thisMonthsBdays.push(employees);
         }
-
-        renderThisMonthsBdays(thisMonthsBdays);
       });
+      renderThisMonthsBdays(thisMonthsBdays);
     });
   });
 
   function renderThisMonthsBdays(data) {
     $("#search-results").empty();
     console.log(data);
-    let bdayHTML = `<table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th></thead><tbody>`;
+    let bdayHTML = `<br><h3>This month's birthdays</h5><br><table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th></thead><tbody>`;
     data.forEach(function(data) {
       const tableRow = `<tr>
           <th>${data.first_name}</th>
