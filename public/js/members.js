@@ -162,12 +162,17 @@ $(document).ready(function() {
     console.log(searchInput);
     $.get("/api/employees").then(function(data) {
       data.forEach(function(employees) {
-        if (employees.first_name.toLowerCase() === searchInput) {
+        if (
+          employees.first_name.toLowerCase() === searchInput ||
+          employees.last_name.toLowerCase() === searchInput ||
+          employees.food_preference.toLowerCase() === searchInput ||
+          employees.email.toLowerCase() === searchInput
+        ) {
           searchResults.push(employees);
         }
-        if (employees.last_name.toLowerCase() === searchInput) {
-          searchResults.push(employees);
-        }
+        // if (employees.last_name.toLowerCase() === searchInput) {
+        //   searchResults.push(employees);
+        // }
       });
       renderSearchResults(searchResults);
     });
