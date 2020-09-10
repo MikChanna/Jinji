@@ -148,23 +148,20 @@ $(document).ready(function() {
   function renderIncompleteOnboardingTable(noCompliance, noOrientation) {
     $("#search-results").empty();
     let missingOnboardingRequirementsHTML = `<br><h3>Missing onboarding requirements</h3><br>
-    <table><thead><tr><th><strong>Missing Requirement</strong></th><th>First name</th>
-    <th>Last name</th>
+    <table><thead><tr><th><strong>Missing Requirement</strong></th><th>Name</th>
     </thead><tbody><tr>`;
 
     noCompliance.forEach(function(data) {
       const tableRow = `<tr>
       <th><strong>Compliance training incomplete</strong></th>
-      <th>${data.first_name}</th>
-      <th>${data.last_name}</th></tr>`;
+      <th>${data.first_name} ${data.last_name}</th></tr>`;
       missingOnboardingRequirementsHTML += tableRow;
     });
 
     noOrientation.forEach(function(data) {
       const tableRow = `<tr>
       <th><strong>Orientation incomplete</strong></th>
-      <th>${data.first_name}</th>
-      <th>${data.last_name}</th></tr>`;
+      <th>${data.first_name} ${data.last_name}</th></tr>`;
       missingOnboardingRequirementsHTML += tableRow;
     });
 
