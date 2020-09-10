@@ -20,14 +20,23 @@ $(document).ready(function() {
       orientationComplete: orientationInput.val().trim(),
       compliance_trainingComplete: complianceTrainingInput.val().trim(),
     };
+
+    if (!newEmployee.orientationCompete) {
+      newEmployee.orientationComplete = "1900-01-01";
+      console.log(newEmployee.orientationComplete);
+    }
+
+    if (!newEmployee.compliance_trainingComplete) {
+      newEmployee.compliance_trainingComplete = "1900-01-01";
+      console.log(newEmployee.compliance_trainingComplete);
+    }
+
     if (
       !newEmployee.first_name ||
       !newEmployee.last_name ||
       !newEmployee.birthday ||
       !newEmployee.email ||
-      !newEmployee.hire_date ||
-      !newEmployee.orientationComplete ||
-      !newEmployee.compliance_trainingComplete
+      !newEmployee.hire_date
     ) {
       return;
     }

@@ -12,6 +12,7 @@ $(document).ready(function() {
 
   const addEmployee = $(".addEmployee");
   const viewMilestones = $(".viewMilestones");
+  const onboardingRequirements = $(".onboardingRequirements");
 
   // When the signup button is clicked, we validate the email and password are not blank
   addEmployee.on("click", function(event) {
@@ -80,7 +81,7 @@ $(document).ready(function() {
   function renderThisMonthsBdays(data) {
     $("#search-results").empty();
     console.log(data);
-    let bdayHTML = `<br><h3>This month's birthdays</h5><br><table><thead><tr><th>First Name</th><th>Last Name</th><th>Birthday</th></thead><tbody>`;
+    let bdayHTML = `<br><h3>This month's birthdays</h3><br><table><thead><tr><th>First Name</th><th>Last Name</th><th>Birthday</th></thead><tbody>`;
     data.forEach(function(data) {
       const tableRow = `<tr>
           <th>${data.first_name}</th>
@@ -95,7 +96,7 @@ $(document).ready(function() {
 
   function renderThisMonthsWorkAnniversaries(data) {
     console.log(data);
-    let anniversaryHTML = `<br><h3>This month's work anniversaries</h5>
+    let anniversaryHTML = `<br><h3>This month's work anniversaries</h3>
     <br><table><thead>
     <tr><th>First Name</th>
     <th>Last Name</th>
@@ -119,6 +120,57 @@ $(document).ready(function() {
     });
     anniversaryHTML += `</tbody></table>`;
     $("#search-results").append(anniversaryHTML);
+  }
+
+  // event listener for the view milestones button
+  onboardingRequirements.on("click", function(event) {
+    event.preventDefault();
+    console.log("onboarding requirements button clicked");
+    $.get("/api/employees").then(function(data) {
+      console.log(data);
+      const incompleteComplianceTraining = [];
+      const incompleteOrientation = [];
+      data.forEach(function(employees) {
+        if (employees.compliance_trainingComplete === "1900-01-01") {
+          incompleteComplianceTraining.push(employees);
+        }
+        if (employees.orientationComplete === "1900-01-01") {
+          incompleteOrientation.push(employees);
+        }
+      });
+      renderIncompleteOnboardingTable(
+        incompleteComplianceTraining,
+        incompleteOrientation
+      );
+    });
+  });
+
+  function renderIncompleteOnboardingTable(noCompliance, noOrientation) {
+    $("#search-results").empty();
+    let missingOnboardingRequirementsHTML = `<br><h3>Missing onboarding requirements</h3><br>
+    <table><thead><tr><th><strong>Missing Requirement</strong></th><th>First name</th>
+    <th>Last name</th>
+    </thead><tbody><tr>`;
+
+    noCompliance.forEach(function(data) {
+      const tableRow = `<tr>
+      <th><strong>Compliance training incomplete</strong></th>
+      <th>${data.first_name}</th>
+      <th>${data.last_name}</th></tr>`;
+      missingOnboardingRequirementsHTML += tableRow;
+    });
+
+    noOrientation.forEach(function(data) {
+      const tableRow = `<tr>
+      <th><strong>Orientation incomplete</strong></th>
+      <th>${data.first_name}</th>
+      <th>${data.last_name}</th></tr>`;
+      missingOnboardingRequirementsHTML += tableRow;
+    });
+
+    missingOnboardingRequirementsHTML += `</tbody></table>`;
+    console.log(missingOnboardingRequirementsHTML);
+    $("#search-results").append(missingOnboardingRequirementsHTML);
   }
 
   // get hobbies from table and render to page.

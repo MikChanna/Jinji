@@ -32,26 +32,18 @@ module.exports = function(sequelize, DataTypes) {
         len: [5],
       },
     },
-    // allergyID: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: true,
-    //   foreignKey: true,
-    // },
-    // hobbyID: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: true,
-    //   foreignKey: true,
-    // },
     hire_date: {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
-
     orientationComplete: {
       type: DataTypes.DATEONLY,
+      allowNull: true,
     },
     compliance_trainingComplete: {
       type: DataTypes.DATEONLY,
+      allowNull: true,
+      default: "",
     },
     food_preference: {
       type: DataTypes.STRING,
