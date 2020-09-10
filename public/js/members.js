@@ -152,14 +152,12 @@ $(document).ready(function() {
   //event listener for the search button
   submitSearch.on("click", function(event) {
     event.preventDefault();
-    console.log("submit button clicked");
     const searchResults = [];
     const searchInput = $("#searchInput")
       .val()
       .trim()
       .toLowerCase();
 
-    console.log(searchInput);
     $.get("/api/employees").then(function(data) {
       data.forEach(function(employees) {
         if (
