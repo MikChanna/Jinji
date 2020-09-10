@@ -71,7 +71,7 @@ $(document).ready(function() {
       const tableRow = `<tr>
           <th>${data.first_name}</th>
           <th>${data.last_name}</th>
-          <th>${data.birthday}</th>
+          <th>${moment(data.birthday).format("MMMM Do YYYY")}</th>
         </tr>`;
       bdayHTML += tableRow;
     });
@@ -94,7 +94,7 @@ $(document).ready(function() {
       const tableRow = `<tr>
           <th>${data.first_name}</th>
           <th>${data.last_name}</th>
-          <th>${data.hire_date}</th>
+          <th>${moment(data.hire_date).format("MMMM Do YYYY")}</th>
           <th>${yearsEmployed}</th>
         </tr>`;
       anniversaryHTML += tableRow;
