@@ -12,6 +12,7 @@ $(document).ready(function() {
   const addEmployee = $(".addEmployee");
   const viewMilestones = $(".viewMilestones");
   const onboardingRequirements = $(".onboardingRequirements");
+  const submitSearch = $("#submitSearch");
 
   // When the signup button is clicked, we validate the email and password are not blank
   addEmployee.on("click", function(event) {
@@ -24,21 +25,6 @@ $(document).ready(function() {
     let renderAllHTML = `<table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th>
       <th>Hire Date</th><th>Dietary Preference</th></thead><tbody>`;
     data.forEach(function(data) {
-      // // removing the below since we probably don't need orientation/compliance info in the main table
-      // if (data.orientationComplete === "1900-01-01") {
-      //   data.orientationComplete = "Incomplete";
-      // } else {
-      //   data.orientationComplete = moment(data.orientationComplete).format(
-      //     "MMMM Do YYYY"
-      //   );
-      // }
-      // if (data.compliance_trainingComplete === "1900-01-01") {
-      //   data.compliance_trainingComplete = "Incomplete";
-      // } else {
-      //   data.compliance_trainingComplete = moment(
-      //     data.compliance_trainingComplete
-      //   ).format("MMMM Do YYYY");
-      // }
       const tableRow = `<tr>
           <th>${data.first_name}</th>
           <th>${data.last_name}</th>
@@ -161,6 +147,68 @@ $(document).ready(function() {
     missingOnboardingRequirementsHTML += `</tbody></table>`;
     console.log(missingOnboardingRequirementsHTML);
     $("#search-results").append(missingOnboardingRequirementsHTML);
+  }
+
+  //event listener for the search button
+  submitSearch.on("click", function(event) {
+    event.preventDefault();
+    console.log("submit button clicked");
+    const searchResults = [];
+    const searchInput = $("#searchInput")
+      .val()
+      .trim()
+      .toLowerCase();
+
+    console.log(searchInput);
+    $.get("/api/employees").then(function(data) {
+      data.forEach(function(employees) {
+        if (employees.first_name.toLowerCase() === searchInput) {
+          searchResults.push(employees);
+        }
+        if (employees.last_name.toLowerCase() === searchInput) {
+          searchResults.push(employees);
+        }
+      });
+      renderSearchResults(searchResults);
+    });
+  });
+
+  function renderSearchResults(searchResults) {
+    let searchResultsHTML = `<table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th>
+      <th>Hire Date</th><th>Dietary Preference</th><th>Orientation</th><th>Compliance Training</th></thead><tbody>`;
+    searchResults.forEach(function(data) {
+      if (data.orientationComplete === "1900-01-01") {
+        data.orientationComplete = "Incomplete";
+      } else {
+        data.orientationComplete = moment(data.orientationComplete).format(
+          "MMMM Do YYYY"
+        );
+      }
+
+      if (data.compliance_trainingComplete === "1900-01-01") {
+        data.compliance_trainingComplete = "Incomplete";
+      } else {
+        data.compliance_trainingComplete = moment(
+          data.compliance_trainingComplete
+        ).format("MMMM Do YYYY");
+      }
+
+      const tableRow = `<tr>
+          <th>${data.first_name}</th>
+          <th>${data.last_name}</th>
+          <th>${data.email}</th>
+          <th>${moment(data.birthday).format("MMMM Do YYYY")}</th>
+          <th>${moment(data.hire_date).format("MMMM Do YYYY")}</th>
+          <th>${data.food_preference}</th>
+          <th>${data.orientationComplete}</th>
+          <th>${data.compliance_trainingComplete}</th></tr>`;
+
+      searchResultsHTML += tableRow;
+    });
+
+    searchResultsHTML += `</tbody></table>`;
+    $("#search-results").empty();
+    $("#search-results").append(searchResultsHTML);
   }
 
   // get hobbies from table and render to page.
