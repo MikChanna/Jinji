@@ -6,7 +6,6 @@ $(document).ready(function() {
   });
 
   $.get("/api/employees").then(function(data) {
-    console.log(data);
     renderAllEmployeeData(data);
   });
 
@@ -17,13 +16,11 @@ $(document).ready(function() {
   // When the signup button is clicked, we validate the email and password are not blank
   addEmployee.on("click", function(event) {
     event.preventDefault();
-    console.log("You're on a new page");
     window.location.replace("/addemployee");
   });
 
   //loops through all employees in the database and prints them to the home page at members.html
   function renderAllEmployeeData(data) {
-    console.log(data);
     let renderAllHTML = `<table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th>
       <th>Hire Date</th><th>Orientation Complete</th><th>Compliance Training Complete</th></thead><tbody>`;
     data.forEach(function(data) {
@@ -47,9 +44,7 @@ $(document).ready(function() {
   // event listener for the view milestones button
   viewMilestones.on("click", function(event) {
     event.preventDefault();
-    console.log("view milestones button clicked");
     $.get("/api/employees").then(function(data) {
-      console.log(data);
       const thisMonthsBdays = [];
       const thisMonthsWorkAnniversaries = [];
       data.forEach(function(employees) {
@@ -58,14 +53,6 @@ $(document).ready(function() {
         const hireMonth = splitHire_Date[1];
         const bdayMonth = splitBday[1];
         const currentMonth = moment().format("MM");
-        console.log(
-          "current month is: " +
-            currentMonth +
-            " and bday month is: " +
-            bdayMonth +
-            " and hire month is: " +
-            hireMonth
-        );
         if (bdayMonth === currentMonth) {
           thisMonthsBdays.push(employees);
         }
@@ -80,7 +67,6 @@ $(document).ready(function() {
 
   function renderThisMonthsBdays(data) {
     $("#search-results").empty();
-    console.log(data);
     let bdayHTML = `<br><h3>This month's birthdays</h3><br><table><thead><tr><th>First Name</th><th>Last Name</th><th>Birthday</th></thead><tbody>`;
     data.forEach(function(data) {
       const tableRow = `<tr>
@@ -95,7 +81,6 @@ $(document).ready(function() {
   }
 
   function renderThisMonthsWorkAnniversaries(data) {
-    console.log(data);
     let anniversaryHTML = `<br><h3>This month's work anniversaries</h3>
     <br><table><thead>
     <tr><th>First Name</th>
@@ -106,10 +91,7 @@ $(document).ready(function() {
     data.forEach(function(data) {
       const hireYear = data.hire_date.slice(0, 4);
       const currentYear = moment().format("YYYY");
-      console.log(currentYear);
-      console.log(hireYear);
       const yearsEmployed = currentYear - hireYear;
-      console.log(yearsEmployed);
       const tableRow = `<tr>
           <th>${data.first_name}</th>
           <th>${data.last_name}</th>
@@ -125,9 +107,7 @@ $(document).ready(function() {
   // event listener for the view milestones button
   onboardingRequirements.on("click", function(event) {
     event.preventDefault();
-    console.log("onboarding requirements button clicked");
     $.get("/api/employees").then(function(data) {
-      console.log(data);
       const incompleteComplianceTraining = [];
       const incompleteOrientation = [];
       data.forEach(function(employees) {
