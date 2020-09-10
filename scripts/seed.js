@@ -52,7 +52,7 @@ const employeeSeeds = [
     last_name: "Doe",
     birthday: "1987-09-29",
     email: "jane@gmail.com",
-    hire_date: "2010-09-10",
+    hire_date: "2010-09-17",
     orientationComplete: "1900-01-01",
     compliance_trainingComplete: "2010-09-11",
     food_preference: "Vegan",
