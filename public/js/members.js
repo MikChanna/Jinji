@@ -22,30 +22,30 @@ $(document).ready(function() {
   //loops through all employees in the database and prints them to the home page at members.html
   function renderAllEmployeeData(data) {
     let renderAllHTML = `<table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th>
-      <th>Hire Date</th><th>Orientation Complete</th><th>Compliance Training Complete</th></thead><tbody>`;
+      <th>Hire Date</th><th>Dietary Preference</th></thead><tbody>`;
     data.forEach(function(data) {
-      if (data.orientationComplete === "1900-01-01") {
-        data.orientationComplete = "Incomplete";
-      } else {
-        data.orientationComplete = moment(data.orientationComplete).format(
-          "MMMM Do YYYY"
-        );
-      }
-      if (data.compliance_trainingComplete === "1900-01-01") {
-        data.compliance_trainingComplete = "Incomplete";
-      } else {
-        data.compliance_trainingComplete = moment(
-          data.compliance_trainingComplete
-        ).format("MMMM Do YYYY");
-      }
+      // // removing the below since we probably don't need orientation/compliance info in the main table
+      // if (data.orientationComplete === "1900-01-01") {
+      //   data.orientationComplete = "Incomplete";
+      // } else {
+      //   data.orientationComplete = moment(data.orientationComplete).format(
+      //     "MMMM Do YYYY"
+      //   );
+      // }
+      // if (data.compliance_trainingComplete === "1900-01-01") {
+      //   data.compliance_trainingComplete = "Incomplete";
+      // } else {
+      //   data.compliance_trainingComplete = moment(
+      //     data.compliance_trainingComplete
+      //   ).format("MMMM Do YYYY");
+      // }
       const tableRow = `<tr>
           <th>${data.first_name}</th>
           <th>${data.last_name}</th>
           <th>${data.email}</th>
           <th>${moment(data.birthday).format("MMMM Do YYYY")}</th>
           <th>${moment(data.hire_date).format("MMMM Do YYYY")}</th>
-          <th>${data.orientationComplete}</th>
-          <th>${data.compliance_trainingComplete}</th></tr>`;
+          <th>${data.food_preference}</tr>`;
 
       renderAllHTML += tableRow;
     });
