@@ -49,10 +49,7 @@ module.exports = function(app) {
 
   // Route for getting all information from Employee table
   app.get("/api/employees", function(req, res) {
-    db.Employee.findAll({
-      // include: [db.Allergies],
-      // include: [db.Hobbies],
-    }).then(function(dbEmployee) {
+    db.Employee.findAll({}).then(function(dbEmployee) {
       res.json(dbEmployee);
     });
   });
@@ -109,7 +106,7 @@ module.exports = function(app) {
       });
   });
 
-  // Route for getting all information from Employee table
+  // Route for getting information about a specific employee
   app.get("/api/employees/:id", function(req, res) {
     db.Employee.findOne(
       {},
