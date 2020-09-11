@@ -279,6 +279,7 @@ $(document).ready(function() {
                 {
                   label: "Employees",
                   backgroundColor: ["#F1C40F", "#58D68D", "#A569BD"],
+                  fontColor: "white",
                   data: [veggie, vegan, np],
                 },
               ],
@@ -289,7 +290,71 @@ $(document).ready(function() {
                 text: "Food Preferences for our Company",
                 fontColor: "white",
               },
+              legend: {
+                labels: {
+                  fontColor: "white",
+                },
+              },
             },
+          });
+        });
+      });
+    });
+    const foodchart = `<canvas id="myChart"></canvas>`;
+    $("#search-results").append(foodchart);
+    const ctx = $("#myChart");
+  });
+
+  const viewAllergies = $(".allergies");
+
+  viewAllergies.on("click", function(event) {
+    event.preventDefault();
+    $("#search-results").empty();
+
+    $.get("/api/nut").then(function(data) {
+      const nut = data.length;
+      console.log(nut);
+      $.get("/api/milk").then(function(data) {
+        const milk = data.length;
+        $.get("/api/soy").then(function(data) {
+          const soy = data.length;
+          $.get("/api/fish").then(function(data) {
+            const fish = data.length;
+            $.get("/api/shellfish").then(function(data) {
+              const shellfish = data.length;
+              const chart = new Chart(ctx, {
+                type: "doughnut",
+                data: {
+                  labels: ["Nut", "Milk", "Soy", "Fish", "Shellfish"],
+                  fontColor: "white",
+                  datasets: [
+                    {
+                      label: "Employees",
+                      backgroundColor: [
+                        "#F1C40F",
+                        "#58D68D",
+                        "#A569BD",
+                        "#E74C3C",
+                        "#F8C471",
+                      ],
+                      data: [nut, milk, soy, fish, shellfish],
+                    },
+                  ],
+                },
+                options: {
+                  title: {
+                    display: true,
+                    text: "Allergies",
+                    fontColor: "white",
+                  },
+                  legend: {
+                    labels: {
+                      fontColor: "white",
+                    },
+                  },
+                },
+              });
+            });
           });
         });
       });
