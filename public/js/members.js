@@ -284,6 +284,11 @@ $(document).ready(function() {
                 text: "Food Preferences for our Company",
                 fontColor: "white",
               },
+              legend: {
+                labels: {
+                  fontColor: "white",
+                },
+              },
             },
           });
         });
@@ -315,6 +320,7 @@ $(document).ready(function() {
                 type: "doughnut",
                 data: {
                   labels: ["Nut", "Milk", "Soy", "Fish", "Shellfish"],
+                  fontColor: "white",
                   datasets: [
                     {
                       label: "Employees",
@@ -325,7 +331,6 @@ $(document).ready(function() {
                         "#E74C3C",
                         "#F8C471",
                       ],
-                      fontColor: "white",
                       data: [nut, milk, soy, fish, shellfish],
                     },
                   ],
@@ -335,6 +340,11 @@ $(document).ready(function() {
                     display: true,
                     text: "Allergies",
                     fontColor: "white",
+                  },
+                  legend: {
+                    labels: {
+                      fontColor: "white",
+                    },
                   },
                 },
               });
