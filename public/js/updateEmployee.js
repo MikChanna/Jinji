@@ -11,6 +11,7 @@ $(document).ready(function() {
   const compliance_trainingCompleteInput = $("#compliance_trainingComplete");
   const updateEmployeeButton = $(".updateEmployeeButton");
   let allEmployees = {};
+  let employeeInQuestion;
 
   // function checkFoodPreference() {
   //   const foodPreference = $("input[name='food']:checked").val();
@@ -53,6 +54,7 @@ $(document).ready(function() {
       console.log("this person has no preference ");
       $("#np").attr("checked", "checked");
     }
+    employeeInQuestion = employee.id;
   }
 
   nextButton.on("click", function(event) {
@@ -68,6 +70,7 @@ $(document).ready(function() {
   updateEmployeeButton.on("click", function(event) {
     event.preventDefault();
     const updatedEmployee = {
+      id: employeeInQuestion,
       first_name: firstNameInput.val().trim(),
       last_name: lastNameInput.val().trim(),
       birthday: birthdayInput.val().trim(),
@@ -98,6 +101,7 @@ $(document).ready(function() {
     }
 
     updateEmployee(
+      updatedEmployee.id,
       updatedEmployee.first_name,
       updatedEmployee.last_name,
       updatedEmployee.birthday,
@@ -117,6 +121,7 @@ $(document).ready(function() {
   });
 
   function updateEmployee(
+    id,
     first_name,
     last_name,
     birthday,
@@ -126,20 +131,19 @@ $(document).ready(function() {
     compliance_trainingComplete,
     food_preference
   ) {
-    $.put(
-      "api/employees",
-      {
-        first_name: first_name,
-        last_name: last_name,
-        birthday: birthday,
-        email: email,
-        hire_date: hire_date,
-        orientationComplete: orientationComplete,
-        compliance_trainingComplete: compliance_trainingComplete,
-        food_preference: radiocheck(),
-      },
-      {}
-    )
+    const apiReference = "/api/employees/" + id;
+    //logging correctly
+    console.log(apiReference);
+    $.put(apiReference, {
+      first_name: first_name,
+      last_name: last_name,
+      birthday: birthday,
+      email: email,
+      hire_date: hire_date,
+      orientationComplete: orientationComplete,
+      compliance_trainingComplete: compliance_trainingComplete,
+      food_preference: radiocheck(),
+    })
       .then(function(data) {
         window.location.replace("/members");
         console.log("employee updated");
