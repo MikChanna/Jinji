@@ -106,6 +106,7 @@ $(document).ready(function() {
   // event listener for the view milestones button
   onboardingRequirements.on("click", function(event) {
     event.preventDefault();
+
     $.get("/api/employees").then(function(data) {
       const incompleteComplianceTraining = [];
       const incompleteOrientation = [];
@@ -152,6 +153,7 @@ $(document).ready(function() {
   //event listener for the search button
   submitSearch.on("click", function(event) {
     event.preventDefault();
+    $("#myChart").empty();
     const searchResults = [];
     const searchInput = $("#searchInput")
       .val()
@@ -249,4 +251,34 @@ $(document).ready(function() {
       spanAllergies.append(allergyItem);
     });
   }
+
+  const ViewFood = $(".companyfood");
+
+  ViewFood.on("click", function(event) {
+    event.preventDefault();
+    $("#search-results").empty();
+    const foodchart = `<canvas id="myChart"></canvas>`;
+    $("#search-results").append(foodchart);
+    const ctx = $("#myChart");
+    const chart = new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        labels: ["Vegetarian", "Vegan", "No Preference"],
+        datasets: [
+          {
+            label: "Employees",
+            backgroundColor: ["#F1C40F", "#58D68D", "#A569BD"],
+            data: [5, 15, 35],
+          },
+        ],
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Food Preferences for our Company",
+          fontColor: "white",
+        },
+      },
+    });
+  });
 });

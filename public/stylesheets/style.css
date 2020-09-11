@@ -60,3 +60,10 @@ thead {
 h3 {
   color: white;
 }
+
+#myChart {
+  color: ghostwhite;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 7rem;
+}
