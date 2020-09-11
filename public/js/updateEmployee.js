@@ -126,16 +126,20 @@ $(document).ready(function() {
     compliance_trainingComplete,
     food_preference
   ) {
-    $.put("api/employees", {
-      first_name: first_name,
-      last_name: last_name,
-      birthday: birthday,
-      email: email,
-      hire_date: hire_date,
-      orientationComplete: orientationComplete,
-      compliance_trainingComplete: compliance_trainingComplete,
-      food_preference: radiocheck(),
-    })
+    $.put(
+      "api/employees",
+      {
+        first_name: first_name,
+        last_name: last_name,
+        birthday: birthday,
+        email: email,
+        hire_date: hire_date,
+        orientationComplete: orientationComplete,
+        compliance_trainingComplete: compliance_trainingComplete,
+        food_preference: radiocheck(),
+      },
+      {}
+    )
       .then(function(data) {
         window.location.replace("/members");
         console.log("employee updated");
