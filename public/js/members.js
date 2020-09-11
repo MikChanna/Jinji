@@ -13,11 +13,17 @@ $(document).ready(function() {
   const viewMilestones = $(".viewMilestones");
   const onboardingRequirements = $(".onboardingRequirements");
   const submitSearch = $("#submitSearch");
+  const updateEmployee = $(".updateEmployee");
 
   // When the signup button is clicked, we validate the email and password are not blank
   addEmployee.on("click", function(event) {
     event.preventDefault();
     window.location.replace("/addemployee");
+  });
+
+  updateEmployee.on("click", function(event) {
+    event.preventDefault();
+    window.location.replace("/updateemployee");
   });
 
   //loops through all employees in the database and prints them to the home page at members.html

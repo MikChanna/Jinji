@@ -32,8 +32,8 @@ p {
   margin-right: 5rem;
 }
 
-input[type=text]:focus,
-input[type=date]:focus {
+input[type="text"]:focus,
+input[type="date"]:focus {
   box-sizing: border-box;
   border: 1px solid #737373;
 }
@@ -46,4 +46,10 @@ button.button.button-outline {
 .small,
 .member-name {
   font-size: 10px;
+}
+
+textarea {
+  height: 38px;
+  padding: 3px;
+  margin: 0px;
 }

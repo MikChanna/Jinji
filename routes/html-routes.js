@@ -36,4 +36,8 @@ module.exports = function(app) {
   app.get("/addemployee", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/employee_new.html"));
   });
+
+  app.get("/updateemployee", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/employee_update.html"));
+  });
 };
