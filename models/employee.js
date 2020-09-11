@@ -48,6 +48,9 @@ module.exports = function(sequelize, DataTypes) {
     food_preference: {
       type: DataTypes.STRING,
     },
+    allergy: {
+      type: DataTypes.STRING,
+    },
   });
 
   Employee.associate = function(models) {

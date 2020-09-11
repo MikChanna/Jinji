@@ -5,10 +5,6 @@ db.sequelize.sync({ force: true }).then(() => {
     db.Hobbies.create(item);
     console.log("hobbies created");
   });
-  allergySeeds.forEach((item) => {
-    db.Allergies.create(item);
-    console.log("allergies created");
-  });
 
   employeeSeeds.forEach((item) => {
     db.Employee.create(item);
@@ -26,6 +22,7 @@ const employeeSeeds = [
     orientationComplete: "2020-08-20",
     compliance_trainingComplete: "2020-08-27",
     food_preference: "No Preference",
+    allergy: "Nut",
   },
   {
     first_name: "Rachel",
@@ -36,6 +33,7 @@ const employeeSeeds = [
     orientationComplete: "2019-08-21",
     compliance_trainingComplete: "2019-09-01",
     food_preference: "Vegan",
+    allergy: "Fish",
   },
   {
     first_name: "Tyler",
@@ -46,6 +44,7 @@ const employeeSeeds = [
     orientationComplete: "2018-03-01",
     compliance_trainingComplete: "2018-04-21",
     food_preference: "Vegetarian",
+    allergy: "Shellfish",
   },
   {
     first_name: "Jane",
@@ -56,6 +55,7 @@ const employeeSeeds = [
     orientationComplete: "1900-01-01",
     compliance_trainingComplete: "2010-09-11",
     food_preference: "Vegan",
+    allergy: "Gluten",
   },
   {
     first_name: "John",
@@ -66,6 +66,7 @@ const employeeSeeds = [
     orientationComplete: "2008-12-11",
     compliance_trainingComplete: "2008-12-13",
     food_preference: "No Preference",
+    allergy: "Nut",
   },
   {
     first_name: "Susan",
@@ -76,6 +77,7 @@ const employeeSeeds = [
     orientationComplete: "2020-09-05",
     compliance_trainingComplete: "1900-01-01",
     food_preference: "Vegan",
+    allergy: "Fish",
   },
   {
     first_name: "Ivan",
@@ -86,6 +88,7 @@ const employeeSeeds = [
     orientationComplete: "2019-07-20",
     compliance_trainingComplete: "2019-07-30",
     food_preference: "No Preference",
+    allergy: "Nut",
   },
   {
     first_name: "Christie",
@@ -117,29 +120,6 @@ const hobbySeeds = [
   },
   {
     hobby: "Painting",
-    createdAt: 20200902,
-    updatedAt: 20200902,
-  },
-];
-
-const allergySeeds = [
-  {
-    allergy: "Nut",
-    createdAt: 20200902,
-    updatedAt: 20200902,
-  },
-  {
-    allergy: "Soy",
-    createdAt: 20200902,
-    updatedAt: 20200902,
-  },
-  {
-    allergy: "Gluten",
-    createdAt: 20200902,
-    updatedAt: 20200902,
-  },
-  {
-    allergy: "Lactose",
     createdAt: 20200902,
     updatedAt: 20200902,
   },
