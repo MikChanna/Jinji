@@ -12,6 +12,14 @@ $(document).ready(function() {
   const updateEmployeeButton = $(".updateEmployeeButton");
   let allEmployees = {};
 
+  // function checkFoodPreference() {
+  //   const foodPreference = $("input[name='food']:checked").val();
+  //   if (foodPreference) {
+  //     console.log(foodPreference);
+  //     return foodPreference;
+  //   }
+  // }
+
   function fillDropdownMenu() {
     $.get("/api/employees").then(function(data) {
       let optionsHTML = ``;
@@ -34,13 +42,16 @@ $(document).ready(function() {
       `${employee.compliance_trainingComplete}`
     );
     if (employee.food_preference === "Vegan") {
-      $("#vegan").is(":checked");
+      console.log("this person is vegan");
+      $("#vegan").attr("checked", "checked");
     }
     if (employee.food_preference === "Vegetarian") {
-      $("#vegetarian").is(":checked");
+      console.log("this person is veggie");
+      $("#vegetarian").attr("checked", "checked");
     }
     if (employee.food_preference === "No Preference") {
-      $("#np").is(":checked");
+      console.log("this person has no preference ");
+      $("#np").attr("checked", "checked");
     }
   }
 
@@ -115,7 +126,7 @@ $(document).ready(function() {
     compliance_trainingComplete,
     food_preference
   ) {
-    $.post("api/employees", {
+    $.put("api/employees", {
       first_name: first_name,
       last_name: last_name,
       birthday: birthday,

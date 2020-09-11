@@ -70,17 +70,21 @@ $(document).ready(function() {
     compliance_trainingComplete,
     food_preference
   ) {
-    $.post("api/employees", {
-      first_name: first_name,
-      last_name: last_name,
-      birthday: birthday,
-      email: email,
-      hire_date: hire_date,
-      orientationComplete: orientationComplete,
-      compliance_trainingComplete: compliance_trainingComplete,
-      food_preference: radiocheck(),
-      allergy: checkAllergy(),
-    })
+    $.post(
+      "api/employees",
+      {
+        first_name: first_name,
+        last_name: last_name,
+        birthday: birthday,
+        email: email,
+        hire_date: hire_date,
+        orientationComplete: orientationComplete,
+        compliance_trainingComplete: compliance_trainingComplete,
+        food_preference: radiocheck(),
+        allergy: checkAllergy(),
+      },
+      {}
+    )
       .then(function(data) {
         window.location.replace("/members");
         console.log("api called to post new employee");
