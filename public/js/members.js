@@ -257,28 +257,47 @@ $(document).ready(function() {
   ViewFood.on("click", function(event) {
     event.preventDefault();
     $("#search-results").empty();
+
+    $.get("/api/veggie").then(function(data) {
+      const veggie = data.length;
+      console.log(veggie);
+      $.get("/api/vegan").then(function(data) {
+        const vegan = data.length;
+        $.get("/api/np").then(function(data) {
+          const np = data.length;
+          const chart = new Chart(ctx, {
+            type: "doughnut",
+            data: {
+              labels: ["Vegetarian", "Vegan", "No Preference"],
+              datasets: [
+                {
+                  label: "Employees",
+                  backgroundColor: ["#F1C40F", "#58D68D", "#A569BD"],
+                  data: [veggie, vegan, np],
+                },
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: "Food Preferences for our Company",
+                fontColor: "white",
+              },
+            },
+          });
+        });
+      });
+    });
+
+    const veganLength = $.get("/api/vegan").then(function(data) {
+      return data.length;
+    });
+
+    const npLength = $.get("/api/np").then(function(data) {
+      return data.length;
+    });
     const foodchart = `<canvas id="myChart"></canvas>`;
     $("#search-results").append(foodchart);
     const ctx = $("#myChart");
-    const chart = new Chart(ctx, {
-      type: "doughnut",
-      data: {
-        labels: ["Vegetarian", "Vegan", "No Preference"],
-        datasets: [
-          {
-            label: "Employees",
-            backgroundColor: ["#F1C40F", "#58D68D", "#A569BD"],
-            data: [5, 15, 35],
-          },
-        ],
-      },
-      options: {
-        title: {
-          display: true,
-          text: "Food Preferences for our Company",
-          fontColor: "white",
-        },
-      },
-    });
   });
 });

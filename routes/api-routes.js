@@ -148,4 +148,37 @@ module.exports = function(app) {
       res.json(dbAllergy);
     });
   });
+
+  // Route for getting all information from allergies
+  app.get("/api/veggie", function(req, res) {
+    db.Employee.findAll({
+      where: {
+        food_preference: "Vegetarian",
+      },
+    }).then(function(dbveggie) {
+      res.json(dbveggie);
+    });
+  });
+
+  // // Route for getting all information from allergies
+  app.get("/api/vegan", function(req, res) {
+    db.Employee.findAll({
+      where: {
+        food_preference: "Vegan",
+      },
+    }).then(function(dbvegan) {
+      res.json(dbvegan);
+    });
+  });
+
+  // // Route for getting all information from allergies
+  app.get("/api/np", function(req, res) {
+    db.Employee.findAll({
+      where: {
+        food_preference: "No Preference",
+      },
+    }).then(function(dbnp) {
+      res.json(dbnp);
+    });
+  });
 };
