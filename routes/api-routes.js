@@ -181,4 +181,54 @@ module.exports = function(app) {
       res.json(dbnp);
     });
   });
+
+  app.get("/api/nut", function(req, res) {
+    db.Employee.findAll({
+      where: {
+        allergy: "Nut",
+      },
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  app.get("/api/milk", function(req, res) {
+    db.Employee.findAll({
+      where: {
+        allergy: "Milk",
+      },
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  app.get("/api/soy", function(req, res) {
+    db.Employee.findAll({
+      where: {
+        allergy: "Soy",
+      },
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  app.get("/api/fish", function(req, res) {
+    db.Employee.findAll({
+      where: {
+        allergy: "Fish",
+      },
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  app.get("/api/shellfish", function(req, res) {
+    db.Employee.findAll({
+      where: {
+        allergy: "Shellfish",
+      },
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
 };

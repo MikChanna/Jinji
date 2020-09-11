@@ -79,6 +79,7 @@ $(document).ready(function() {
       orientationComplete: orientationComplete,
       compliance_trainingComplete: compliance_trainingComplete,
       food_preference: radiocheck(),
+      allergy: checkAllergy(),
     })
       .then(function(data) {
         window.location.replace("/members");
@@ -96,6 +97,13 @@ $(document).ready(function() {
     if (foodpref) {
       console.log(foodpref);
       return foodpref;
+    }
+  }
+  function checkAllergy() {
+    const allergy = $("input[name='allergy']:checked").val();
+    if (allergy) {
+      console.log(allergy);
+      return allergy;
     }
   }
 });
