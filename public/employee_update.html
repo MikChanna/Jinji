@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Jinji - Update Employee</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Milligram CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+    <link href="./stylesheets/employee_new.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/logout">
+            Logout
+          </a>
+          <p class="navbar-brand small">
+            You are logged in as <span class="member-name"></span>
+          </p>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <p>Jinji 人事</p>
+      <h2>Update an employee</h2>
+      <h5>Which employee would you like to update?</h5>
+      <label for="employeeSelection">Select an employee</label>
+    </br>
+      <select id="employeeOptions">
+        <!-- options for employees are dynamically created in javascript  -->
+      </select>
+      <button type="submit" class="button button-outline selectEmployeeToUpdate">Next</button>
+
+      <div class="updateFormArea">
+        <form>
+          <fieldset>
+            <label for="first_name">First Name</label>
+            <textarea id = "first_name"></textarea>
+            <label for="last_name">Last Name</label>
+            <textarea id = "last_name"></textarea>
+            <label for="birthday">Birthday</label>
+            <textarea id = "birthday" type ="date"></textarea>
+            <label for="email">Email </label>
+            <textarea id = "email"></textarea>
+            <label for="hire_date">Hire Date</label>
+            <textarea id = "hire_date" type ="date"></textarea>
+            <label for="orientationComplete">Orientation Complete Date</label>
+            <textarea id = "orientationComplete" type ="date"></textarea>
+            <label for="compliance_trainingComplete">Compliance Training Complete Date</label>
+            <textarea id = "compliance_trainingComplete" type ="date"></textarea>
+                  <span id="foodpref">
+                    Food Preference:<br>
+                    <input type="radio" name="food" value="Vegetarian" id="veggie">Vegetarian<br>
+                    <input type="radio" name="food" value="Vegan" id="vegan">Vegan<br>
+                    <input type="radio" name="food" value="No Preference" id="np">No Preference<br>
+                </span>
+
+                <button type="submit" class="button button-outline updateEmployeeButton">Save</button>
+    
+            </div>
+    
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+  <script type="text/javascript" src="js/members.js"></script>
+  <script type="text/javascript" src="js/updateEmployee.js"></script>
+</html>
