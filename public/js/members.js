@@ -288,14 +288,6 @@ $(document).ready(function() {
         });
       });
     });
-
-    const veganLength = $.get("/api/vegan").then(function(data) {
-      return data.length;
-    });
-
-    const npLength = $.get("/api/np").then(function(data) {
-      return data.length;
-    });
     const foodchart = `<canvas id="myChart"></canvas>`;
     $("#search-results").append(foodchart);
     const ctx = $("#myChart");
