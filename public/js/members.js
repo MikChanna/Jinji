@@ -29,15 +29,14 @@ $(document).ready(function() {
   //loops through all employees in the database and prints them to the home page at members.html
   function renderAllEmployeeData(data) {
     let renderAllHTML = `<table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th>
-      <th>Hire Date</th><th>Dietary Preference</th></thead><tbody>`;
+      <th>Hire Date</th></thead><tbody>`;
     data.forEach(function(data) {
       const tableRow = `<tr>
           <th>${data.first_name}</th>
           <th>${data.last_name}</th>
           <th>${data.email}</th>
           <th>${moment(data.birthday).format("MMMM Do YYYY")}</th>
-          <th>${moment(data.hire_date).format("MMMM Do YYYY")}</th>
-          <th>${data.food_preference}</tr>`;
+          <th>${moment(data.hire_date).format("MMMM Do YYYY")}</th>`;
 
       renderAllHTML += tableRow;
     });
@@ -70,6 +69,7 @@ $(document).ready(function() {
     });
   });
 
+  //renders this month's birthdays to a chart on the main screen
   function renderThisMonthsBdays(data) {
     $("#search-results").empty();
     let bdayHTML = `<br><h3>This month's birthdays</h3><br><table><thead><tr><th>First Name</th><th>Last Name</th><th>Birthday</th></thead><tbody>`;
@@ -85,6 +85,7 @@ $(document).ready(function() {
     $("#search-results").append(bdayHTML);
   }
 
+  //renders this months work anniversaries to a chart on the main screen
   function renderThisMonthsWorkAnniversaries(data) {
     let anniversaryHTML = `<br><h3>This month's work anniversaries</h3>
     <br><table><thead>
@@ -109,7 +110,7 @@ $(document).ready(function() {
     $("#search-results").append(anniversaryHTML);
   }
 
-  // event listener for the view milestones button
+  // event listener for the onboarding requirements button then calls the API
   onboardingRequirements.on("click", function(event) {
     event.preventDefault();
 
@@ -131,6 +132,7 @@ $(document).ready(function() {
     });
   });
 
+  //renders a chart of anyone who has not completed onboarding requirements
   function renderIncompleteOnboardingTable(noCompliance, noOrientation) {
     $("#search-results").empty();
     let missingOnboardingRequirementsHTML = `<br><h3>Missing onboarding requirements</h3><br>
@@ -172,7 +174,9 @@ $(document).ready(function() {
           employees.first_name.toLowerCase() === searchInput ||
           employees.last_name.toLowerCase() === searchInput ||
           employees.food_preference.toLowerCase() === searchInput ||
-          employees.email.toLowerCase() === searchInput
+          employees.email.toLowerCase() === searchInput ||
+          employees.hobby.toLowerCase() === searchInput ||
+          employees.allergy.toLowerCase() === searchInput
         ) {
           searchResults.push(employees);
         }
@@ -184,25 +188,27 @@ $(document).ready(function() {
     });
   });
 
+  //renders search results to a chart on the screen
   function renderSearchResults(searchResults) {
     let searchResultsHTML = `<table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th>
-      <th>Hire Date</th><th>Dietary Preference</th><th>Orientation</th><th>Compliance Training</th></thead><tbody>`;
+      <th>Hire Date</th><th>Dietary Preference</th>
+      <th>Allergies</th><th>Hobbies</th></thead><tbody>`;
     searchResults.forEach(function(data) {
-      if (data.orientationComplete === "1900-01-01") {
-        data.orientationComplete = "Incomplete";
-      } else {
-        data.orientationComplete = moment(data.orientationComplete).format(
-          "MMMM Do YYYY"
-        );
-      }
+      // if (data.orientationComplete === "1900-01-01") {
+      //   data.orientationComplete = "Incomplete";
+      // } else {
+      //   data.orientationComplete = moment(data.orientationComplete).format(
+      //     "MMMM Do YYYY"
+      //   );
+      // }
 
-      if (data.compliance_trainingComplete === "1900-01-01") {
-        data.compliance_trainingComplete = "Incomplete";
-      } else {
-        data.compliance_trainingComplete = moment(
-          data.compliance_trainingComplete
-        ).format("MMMM Do YYYY");
-      }
+      // if (data.compliance_trainingComplete === "1900-01-01") {
+      //   data.compliance_trainingComplete = "Incomplete";
+      // } else {
+      //   data.compliance_trainingComplete = moment(
+      //     data.compliance_trainingComplete
+      //   ).format("MMMM Do YYYY");
+      // }
 
       const tableRow = `<tr>
           <th>${data.first_name}</th>
@@ -211,8 +217,8 @@ $(document).ready(function() {
           <th>${moment(data.birthday).format("MMMM Do YYYY")}</th>
           <th>${moment(data.hire_date).format("MMMM Do YYYY")}</th>
           <th>${data.food_preference}</th>
-          <th>${data.orientationComplete}</th>
-          <th>${data.compliance_trainingComplete}</th></tr>`;
+          <th>${data.allergy}</th>
+          <th>${data.hobby}</th></tr>`;
 
       searchResultsHTML += tableRow;
     });

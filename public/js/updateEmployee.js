@@ -13,14 +13,6 @@ $(document).ready(function() {
   let allEmployees = {};
   let employeeInQuestion;
 
-  // function checkFoodPreference() {
-  //   const foodPreference = $("input[name='food']:checked").val();
-  //   if (foodPreference) {
-  //     console.log(foodPreference);
-  //     return foodPreference;
-  //   }
-  // }
-
   function fillDropdownMenu() {
     $.get("/api/employees").then(function(data) {
       let optionsHTML = ``;
@@ -43,16 +35,40 @@ $(document).ready(function() {
       `${employee.compliance_trainingComplete}`
     );
     if (employee.food_preference === "Vegan") {
-      console.log("this person is vegan");
       $("#vegan").attr("checked", "checked");
     }
     if (employee.food_preference === "Vegetarian") {
-      console.log("this person is veggie");
       $("#vegetarian").attr("checked", "checked");
     }
     if (employee.food_preference === "No Preference") {
-      console.log("this person has no preference ");
       $("#np").attr("checked", "checked");
+    }
+    if (employee.allergy === "Nut") {
+      $("#nut").attr("checked", "checked");
+    }
+    if (employee.allergy === "Milk") {
+      $("#milk").attr("checked", "checked");
+    }
+    if (employee.allergy === "Nut") {
+      $("#nut").attr("checked", "checked");
+    }
+    if (employee.allergy === "Fish") {
+      $("#fish").attr("checked", "checked");
+    }
+    if (employee.allergy === "Shellfish") {
+      $("#shellfish").attr("checked", "checked");
+    }
+    if (employee.hobby === "Sports") {
+      $("#sports").attr("checked", "checked");
+    }
+    if (employee.hobby === "Art") {
+      $("#art").attr("checked", "checked");
+    }
+    if (employee.hobby === "Outdoors") {
+      $("#outdoors").attr("checked", "checked");
+    }
+    if (employee.hobby === "Foodie") {
+      $("#foodie").attr("checked", "checked");
     }
     employeeInQuestion = employee.id;
   }
@@ -69,18 +85,17 @@ $(document).ready(function() {
 
   updateEmployeeButton.on("click", function(event) {
     event.preventDefault();
+    console.log(employeeInQuestion);
     const updatedEmployee = {
-      id: employeeInQuestion,
-      first_name: firstNameInput.val().trim(),
-      last_name: lastNameInput.val().trim(),
-      birthday: birthdayInput.val().trim(),
-      email: emailInput.val().trim(),
-      hire_date: hireDateInput.val().trim(),
-      orientationComplete: orientationCompleteInput.val().trim(),
-      compliance_trainingComplete: compliance_trainingCompleteInput
-        .val()
-        .trim(),
+      first_name: firstNameInput.val(),
+      last_name: lastNameInput.val(),
+      birthday: birthdayInput.val(),
+      email: emailInput.val(),
+      hire_date: hireDateInput.val(),
+      orientationComplete: orientationCompleteInput.val(),
+      compliance_trainingComplete: compliance_trainingCompleteInput.val(),
     };
+    console.log(updatedEmployee);
 
     if (!updatedEmployee.orientationCompete) {
       updatedEmployee.orientationComplete = "1900-01-01";
@@ -101,7 +116,6 @@ $(document).ready(function() {
     }
 
     updateEmployee(
-      updatedEmployee.id,
       updatedEmployee.first_name,
       updatedEmployee.last_name,
       updatedEmployee.birthday,
@@ -121,45 +135,56 @@ $(document).ready(function() {
   });
 
   function updateEmployee(
-    id,
     first_name,
     last_name,
     birthday,
     email,
     hire_date,
     orientationComplete,
-    compliance_trainingComplete,
-    food_preference
+    compliance_trainingComplete
   ) {
-    const apiReference = "/api/employees/" + id;
-    //logging correctly
-    console.log(apiReference);
-    $.put(apiReference, {
-      first_name: first_name,
-      last_name: last_name,
-      birthday: birthday,
-      email: email,
-      hire_date: hire_date,
-      orientationComplete: orientationComplete,
-      compliance_trainingComplete: compliance_trainingComplete,
-      food_preference: radiocheck(),
-    })
-      .then(function(data) {
-        window.location.replace("/members");
-        console.log("employee updated");
-      })
-      .catch(updateEmployeeError);
+    const apiReference = "/api/employees/" + employeeInQuestion;
+
+    $.ajax({
+      method: "PUT",
+      url: apiReference,
+      data: {
+        first_name: first_name,
+        last_name: last_name,
+        birthday: birthday,
+        email: email,
+        hire_date: hire_date,
+        orientationComplete: orientationComplete,
+        compliance_trainingComplete: compliance_trainingComplete,
+        food_preference: radiocheckFood(),
+        allergy: radiocheckAllergy(),
+        hobby: radiocheckHobby(),
+      },
+    }).then(function() {
+      console.log("successfully updated employee");
+      window.location.replace("/members");
+    });
   }
 
-  function updateEmployeeError(err) {
-    console.log(err.responseJSON);
-  }
-
-  function radiocheck() {
+  function radiocheckFood() {
     const foodpref = $("input[name='food']:checked").val();
     if (foodpref) {
       console.log(foodpref);
       return foodpref;
+    }
+  }
+  function radiocheckAllergy() {
+    const allergypref = $("input[name='allergy']:checked").val();
+    if (allergypref) {
+      console.log(allergypref);
+      return allergypref;
+    }
+  }
+  function radiocheckHobby() {
+    const hobbypref = $("input[name='hobby']:checked").val();
+    if (hobbypref) {
+      console.log(hobbypref);
+      return hobbypref;
     }
   }
 });

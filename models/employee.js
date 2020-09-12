@@ -51,9 +51,6 @@ module.exports = function(sequelize, DataTypes) {
     allergy: {
       type: DataTypes.STRING,
     },
-    allergy: {
-      type: DataTypes.STRING,
-    },
     hobby: {
       type: DataTypes.STRING,
     },

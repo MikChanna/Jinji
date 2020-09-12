@@ -1,41 +1,51 @@
-# Unit 14 Sequelize Homework: Reverse Engineering Code
+# Jinji
 
-Reverse engineer the starter code provided and create a tutorial for the code.
+<a name="desc"></a>
 
-In the `Develop` folder, there is starter code for a project. Begin inspecting the code to get an understanding of each file's responsibility. Then, in a Google Doc, write a tutorial explaining *every* file and its purpose. If one file is dependant on other files, be sure to let the user know.
+# Description
 
-At the end of the tutorial, add instructions for how you could now add changes to this project.
+Jinji is an application designed for Human Resource professionals and other leaders in management positions who want to foster a more social, inclusive environment for their employees. It provides data on employee preference, interests, etc to inform decisions about how to connect employees to each other, plan meaningful and inclusive events, and recognize employees for upcoming milestones.
 
-Following the [common templates for user stories](https://en.wikipedia.org/wiki/User_story#Common_templates), we can frame this challenge as follows:
+# Table of Contents
 
-```
-AS A developer
+1. [Description](#desc)
+2. [Installation](#install)
+3. [Usage](#usage)
+4. [License](#lic)
+5. [Testing](#test)
+6. [Contributing](#contr)
+7. [Questions](#quest)
 
-I WANT a walk-through of the codebase
+<a name="install"></a>
 
-SO THAT I can use it as a starting point for a new project
-```
+# Installation
 
-## Business Context
+Run an npm install to ensure all required modules are installed before usage.
 
-When joining a new team, you will be expected to inspect a lot of code that you have never seen before. Rather than having a team member explain every line for you, you will dissect the code by yourself, saving any questions for a member of your team.
+<a name="usage"></a>
 
-## Acceptance Criteria
+# Usage
 
-```md
-GIVEN a Node.js application using Sequelize and Passport
-WHEN I follow the walkthrough
-THEN I understand the codebase
-```
-- - -
+This application is designed to be simple and user-friendly.
 
-## Submission on BCS
+[Home page](public/images/homescreen.png)
 
-You are required to submit the following:
+This application is deployed on Heroku and can be visited here:
 
-* A link to a Google Doc or video explaining the application in `Develop/`. 
+<a name="lic"></a>
 
-_Note: Don't forget to change the sharing settings on your Google Doc._
+# License
 
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+No additional licenses are needed for this application.
+
+<a name="test"></a>
+
+# Testing
+
+There is currently no testing set up for this application.
+
+<a name="contr"></a>
+
+# Contributing
+
+When contributing to this project, please add clear and concise comments to all added code to ensure my and future users' understanding of additions and changes.
