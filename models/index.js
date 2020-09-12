@@ -22,16 +22,16 @@ var db = {};
 //   );
 // }
 
-if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-  connection = mysql.createConnection({
-    host: "z8dl7f9kwf2g82re.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    user: "coq8893gxomfa8j4",
-    password: "p77cqqgqgjljxdbh",
-    database: "fyutxff1qnxgveme",
-  });
-}
+// if (process.env.JAWSDB_URL) {
+//   connection = mysql.createConnection(process.env.JAWSDB_URL);
+// } else {
+//   connection = mysql.createConnection({
+//     host: "z8dl7f9kwf2g82re.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+//     user: "coq8893gxomfa8j4",
+//     password: "p77cqqgqgjljxdbh",
+//     database: "fyutxff1qnxgveme",
+//   });
+// }
 
 fs.readdirSync(__dirname)
   .filter(function(file) {
