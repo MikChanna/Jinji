@@ -51,24 +51,13 @@ module.exports = function(sequelize, DataTypes) {
     allergy: {
       type: DataTypes.STRING,
     },
+    allergy: {
+      type: DataTypes.STRING,
+    },
+    hobby: {
+      type: DataTypes.STRING,
+    },
   });
-
-  Employee.associate = function(models) {
-    Employee.belongsToMany(models.Allergies, {
-      through: "employeeAllergies",
-      as: "Allergies",
-      foreignKey: "allergyId",
-      otherKey: "employeeId",
-    });
-  };
-  Employee.associate = function(models) {
-    Employee.belongsToMany(models.Hobbies, {
-      through: "employeeHobbies",
-      as: "Hobbies",
-      foreignKey: "hobbyId",
-      otherKey: "employeeId",
-    });
-  };
 
   return Employee;
 };

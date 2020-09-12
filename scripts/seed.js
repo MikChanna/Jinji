@@ -1,11 +1,6 @@
 const db = require("../models");
 
 db.sequelize.sync({ force: true }).then(() => {
-  hobbySeeds.forEach((item) => {
-    db.Hobbies.create(item);
-    console.log("hobbies created");
-  });
-
   employeeSeeds.forEach((item) => {
     db.Employee.create(item);
     console.log("employees created");
@@ -23,6 +18,7 @@ const employeeSeeds = [
     compliance_trainingComplete: "2020-08-27",
     food_preference: "No Preference",
     allergy: "Nut",
+    hobby: "Foodie",
   },
   {
     first_name: "Rachel",
@@ -34,6 +30,7 @@ const employeeSeeds = [
     compliance_trainingComplete: "2019-09-01",
     food_preference: "Vegan",
     allergy: "Fish",
+    hobby: "Foodie",
   },
   {
     first_name: "Tyler",
@@ -45,6 +42,7 @@ const employeeSeeds = [
     compliance_trainingComplete: "2018-04-21",
     food_preference: "Vegetarian",
     allergy: "Shellfish",
+    hobby: "Foodie",
   },
   {
     first_name: "Jane",
@@ -56,6 +54,7 @@ const employeeSeeds = [
     compliance_trainingComplete: "2010-09-11",
     food_preference: "Vegan",
     allergy: "Gluten",
+    hobby: "Outdoors",
   },
   {
     first_name: "John",
@@ -67,6 +66,7 @@ const employeeSeeds = [
     compliance_trainingComplete: "2008-12-13",
     food_preference: "No Preference",
     allergy: "Nut",
+    hobby: "Outdoors",
   },
   {
     first_name: "Susan",
@@ -78,6 +78,7 @@ const employeeSeeds = [
     compliance_trainingComplete: "1900-01-01",
     food_preference: "Vegan",
     allergy: "Fish",
+    hobby: "Sports",
   },
   {
     first_name: "Ivan",
@@ -89,6 +90,7 @@ const employeeSeeds = [
     compliance_trainingComplete: "2019-07-30",
     food_preference: "No Preference",
     allergy: "Nut",
+    hobby: "Art",
   },
   {
     first_name: "Christie",
@@ -99,28 +101,6 @@ const employeeSeeds = [
     orientationComplete: "2019-01-16",
     compliance_trainingComplete: "2019-02-19",
     food_preference: "Vegetarian",
-  },
-];
-
-const hobbySeeds = [
-  {
-    hobby: "Reading",
-    createdAt: 20200902,
-    updatedAt: 20200902,
-  },
-  {
-    hobby: "Gaming",
-    createdAt: 20200902,
-    updatedAt: 20200902,
-  },
-  {
-    hobby: "Skiing",
-    createdAt: 20200902,
-    updatedAt: 20200902,
-  },
-  {
-    hobby: "Painting",
-    createdAt: 20200902,
-    updatedAt: 20200902,
+    hobby: "Art",
   },
 ];
