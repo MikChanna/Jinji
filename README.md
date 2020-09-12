@@ -8,13 +8,14 @@ Jinji is an application designed for Human Resource professionals and other lead
 
 # Table of Contents
 
-1. [Description](#desc)
-2. [Installation](#install)
-3. [Usage](#usage)
-4. [License](#lic)
-5. [Testing](#test)
-6. [Contributing](#contr)
-7. [Questions](#quest)
+- [Jinji](#jinji)
+- [Description](#description)
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Testing](#testing)
+- [Contributing](#contributing)
 
 <a name="install"></a>
 
