@@ -1,5 +1,7 @@
 # Jinji
 
+By skerr924, MikChanna, ploymahloy
+
 <a name="desc"></a>
 
 # Description
@@ -29,9 +31,15 @@ Run an npm install to ensure all required modules are installed before usage.
 
 This application is designed to be simple and user-friendly.
 
-[Home page](public/images/homescreen.png)
+Home page: <img src = "public/images/homescreen.png">
 
-This application is deployed on Heroku and can be visited here:
+Sample chart: <img src = "public/images/chartView.png">
+
+New employee form: <img src = "public/images/newEmployeeForm.png">
+
+This application is deployed on Heroku and can be visited here: https://stark-waters-09218.herokuapp.com/.
+
+Use "guest@gmail.com" and the password "1234" to login to the guest account.
 
 <a name="lic"></a>
 
