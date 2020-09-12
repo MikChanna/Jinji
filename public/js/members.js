@@ -267,7 +267,11 @@ $(document).ready(function() {
   ViewFood.on("click", function(event) {
     event.preventDefault();
     $("#search-results").empty();
+    insertFoodChart();
+    renderFoodHTML();
+  });
 
+  function insertFoodChart() {
     $.get("/api/veggie").then(function(data) {
       const veggie = data.length;
       console.log(veggie);
@@ -307,14 +311,59 @@ $(document).ready(function() {
     const foodchart = `<canvas id="myChart"></canvas>`;
     $("#search-results").append(foodchart);
     const ctx = $("#myChart");
-  });
+  }
+
+  function renderFoodHTML() {
+    const foodHTML = `
+    <div class = "row rowUnderChart">
+
+    
+    <div class = "column"><h3>Vegetarian</h3><ul id = "veggiediv"></ul></div>
+    <div class = "column"><h3>Vegan</h3><ul id = "vegandiv"></ul></div>
+    <div class = "column"><h3>No Preference</h3><ul id = "npdiv"> </ul></div>
+
+  
+    
+    </div>
+   
+    `;
+
+    $("#search-results").append(foodHTML);
+    $.get("/api/veggie").then(function(data) {
+      data.forEach(function(employees) {
+        const veggie = `
+          <li>${employees.first_name} ${employees.last_name}</li>`;
+        $("#veggiediv").append(veggie);
+      });
+    });
+
+    $.get("/api/vegan").then(function(data) {
+      data.forEach(function(employees) {
+        const vegan = `
+          <li>${employees.first_name} ${employees.last_name}</li>`;
+        $("#vegandiv").append(vegan);
+      });
+    });
+
+    $.get("/api/np").then(function(data) {
+      data.forEach(function(employees) {
+        const np = `
+          <li>${employees.first_name} ${employees.last_name}</li>`;
+        $("#npdiv").append(np);
+      });
+    });
+  }
 
   const viewAllergies = $(".allergies");
 
   viewAllergies.on("click", function(event) {
     event.preventDefault();
     $("#search-results").empty();
+    insertAllergyChart();
+    renderAllergiesHTML();
+  });
 
+  function insertAllergyChart() {
     $.get("/api/nut").then(function(data) {
       const nut = data.length;
       console.log(nut);
@@ -363,10 +412,69 @@ $(document).ready(function() {
         });
       });
     });
+
     const foodchart = `<canvas id="myChart"></canvas>`;
     $("#search-results").append(foodchart);
     const ctx = $("#myChart");
-  });
+  }
+
+  function renderAllergiesHTML() {
+    const allergiesHTML = `
+    <div class = "row rowUnderChart">
+
+    
+    <div class = "column"><h3>Nut</h3><ul id = "nutdiv"></ul></div>
+    <div class = "column"><h3>Milk</h3><ul id = "milkdiv"></ul></div>
+    <div class = "column"><h3>Soy</h3><ul id = "soydiv"> </ul></div>
+    <div class = "column"><h3>Fish</h3><ul id = "fishdiv"></ul></div>
+    <div class = "column"><h3>Shellfish</h3><ul id = "shellfishdiv"></ul></div>
+  
+    
+    </div>
+   
+    `;
+
+    $("#search-results").append(allergiesHTML);
+    $.get("/api/nut").then(function(data) {
+      data.forEach(function(employees) {
+        const nut = `
+          <li>${employees.first_name} ${employees.last_name}</li>`;
+        $("#nutdiv").append(nut);
+      });
+    });
+
+    $.get("/api/milk").then(function(data) {
+      data.forEach(function(employees) {
+        const milk = `
+          <li>${employees.first_name} ${employees.last_name}</li>`;
+        $("#milkdiv").append(milk);
+      });
+    });
+
+    $.get("/api/soy").then(function(data) {
+      data.forEach(function(employees) {
+        const soy = `
+          <li>${employees.first_name} ${employees.last_name}</li>`;
+        $("#soydiv").append(soy);
+      });
+    });
+
+    $.get("/api/fish").then(function(data) {
+      data.forEach(function(employees) {
+        const fish = `
+          <li>${employees.first_name} ${employees.last_name}</li>`;
+        $("#fishdiv").append(fish);
+      });
+    });
+
+    $.get("/api/shellfish").then(function(data) {
+      data.forEach(function(employees) {
+        const shellfish = `
+          <li>${employees.first_name} ${employees.last_name}</li>`;
+        $("#shellfishdiv").append(shellfish);
+      });
+    });
+  }
 
   const viewHobbies = $(".hobbies");
 
@@ -427,12 +535,19 @@ $(document).ready(function() {
   }
 
   function renderHobbiesHTML() {
-    const hobbiesHTML = `<div>
-    <div><h3>Foodie</h3><ul id = "foodiediv"></ul></div>
-    <div><h3>Outdoors</h3><ul id = "outdoorsdiv"></ul></div>
-    <div><h3>Sports</h3><ul id = "sportsdiv"> </ul></div>
-    <div><h3>Art</h3><ul id = "artdiv"></ul></div>
-    </div>`;
+    const hobbiesHTML = `
+    <div class = "row rowUnderChart">
+
+    
+    <div class = "column"><h3>Foodie</h3><ul id = "foodiediv"></ul></div>
+    <div class = "column"><h3>Outdoors</h3><ul id = "outdoorsdiv"></ul></div>
+    <div class = "column"><h3>Sports</h3><ul id = "sportsdiv"> </ul></div>
+    <div class = "column"><h3>Art</h3><ul id = "artdiv"></ul></div>
+  
+    
+    </div>
+   
+    `;
 
     $("#search-results").append(hobbiesHTML);
     $.get("/api/foodie").then(function(data) {

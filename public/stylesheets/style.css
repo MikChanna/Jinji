@@ -65,11 +65,6 @@ placeholder {
   color: black;
 }
 
-input,
-label {
-  color: white;
-}
-
 h1,
 h2,
 h3,
@@ -81,4 +76,8 @@ ul,
 ol,
 textarea {
   color: ghostwhite;
+}
+
+.rowUnderChart {
+  margin-top: 50px;
 }

@@ -136,20 +136,20 @@ module.exports = function(app) {
   });
 
   // Route for getting all information Hobby names
-  app.get("/api/hobbies", function(req, res) {
-    db.Hobbies.findAll({}).then(function(dbHobby) {
-      res.json(dbHobby);
-    });
-  });
+  // app.get("/api/hobbies", function(req, res) {
+  //   db.Hobbies.findAll({}).then(function(dbHobby) {
+  //     res.json(dbHobby);
+  //   });
+  // });
 
   // Route for getting all information from allergies
-  app.get("/api/allergies", function(req, res) {
-    db.Allergies.findAll({}).then(function(dbAllergy) {
-      res.json(dbAllergy);
-    });
-  });
+  // app.get("/api/allergies", function(req, res) {
+  //   db.Allergies.findAll({}).then(function(dbAllergy) {
+  //     res.json(dbAllergy);
+  //   });
+  // });
 
-  // Route for getting all information from allergies
+  // Route for getting all food preferences
   app.get("/api/veggie", function(req, res) {
     db.Employee.findAll({
       where: {
@@ -160,7 +160,6 @@ module.exports = function(app) {
     });
   });
 
-  // // Route for getting all information from allergies
   app.get("/api/vegan", function(req, res) {
     db.Employee.findAll({
       where: {
@@ -171,7 +170,6 @@ module.exports = function(app) {
     });
   });
 
-  // // Route for getting all information from allergies
   app.get("/api/np", function(req, res) {
     db.Employee.findAll({
       where: {
@@ -182,6 +180,7 @@ module.exports = function(app) {
     });
   });
 
+  // routes for getting allergies
   app.get("/api/nut", function(req, res) {
     db.Employee.findAll({
       where: {
@@ -232,6 +231,7 @@ module.exports = function(app) {
     });
   });
 
+  // routes for getting hobbies
   app.get("/api/foodie", function(req, res) {
     db.Employee.findAll({
       where: {
