@@ -53,3 +53,25 @@ textarea {
   padding: 3px;
   margin: 0px;
 }
+
+placeholder {
+  color: black;
+}
+
+input,
+label {
+  color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+ul,
+ol,
+textarea {
+  color: ghostwhite;
+}

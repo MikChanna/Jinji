@@ -70,6 +70,7 @@ $(document).ready(function() {
     });
   });
 
+  //renders this month's birthdays to a chart on the main screen
   function renderThisMonthsBdays(data) {
     $("#search-results").empty();
     let bdayHTML = `<br><h3>This month's birthdays</h3><br><table><thead><tr><th>First Name</th><th>Last Name</th><th>Birthday</th></thead><tbody>`;
@@ -85,6 +86,7 @@ $(document).ready(function() {
     $("#search-results").append(bdayHTML);
   }
 
+  //renders this months work anniversaries to a chart on the main screen
   function renderThisMonthsWorkAnniversaries(data) {
     let anniversaryHTML = `<br><h3>This month's work anniversaries</h3>
     <br><table><thead>
@@ -109,7 +111,7 @@ $(document).ready(function() {
     $("#search-results").append(anniversaryHTML);
   }
 
-  // event listener for the view milestones button
+  // event listener for the onboarding requirements button then calls the API
   onboardingRequirements.on("click", function(event) {
     event.preventDefault();
 
@@ -131,6 +133,7 @@ $(document).ready(function() {
     });
   });
 
+  //renders a chart of anyone who has not completed onboarding requirements
   function renderIncompleteOnboardingTable(noCompliance, noOrientation) {
     $("#search-results").empty();
     let missingOnboardingRequirementsHTML = `<br><h3>Missing onboarding requirements</h3><br>
@@ -184,6 +187,7 @@ $(document).ready(function() {
     });
   });
 
+  //renders search results to a chart on the screen
   function renderSearchResults(searchResults) {
     let searchResultsHTML = `<table><thead><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Birthday</th>
       <th>Hire Date</th><th>Dietary Preference</th><th>Orientation</th><th>Compliance Training</th></thead><tbody>`;

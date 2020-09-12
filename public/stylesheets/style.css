@@ -20,7 +20,6 @@ section {
 }
 
 p {
-  color: ghostwhite;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 7rem;
@@ -52,18 +51,7 @@ input[type="text"]:focus {
 
 table {
   color: white;
-}
-
-tbody {
-  font-size: 10px;
-}
-
-thead {
-  font-size: 12px;
-}
-
-h3 {
-  color: white;
+  font-size: 14px;
 }
 
 #myChart {
@@ -71,4 +59,26 @@ h3 {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 7rem;
+}
+
+placeholder {
+  color: black;
+}
+
+input,
+label {
+  color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+ul,
+ol,
+textarea {
+  color: ghostwhite;
 }
