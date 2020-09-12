@@ -23,17 +23,6 @@ if (config.use_env_variable) {
   );
 }
 
-if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-  connection = mysql.createConnection({
-    host: "w1h4cr5sb73o944p.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    user: "y96wuynfkmy0g809",
-    password: "es8v5avpcar93bpl",
-    database: "lyo536k89p58jn5r",
-  });
-}
-
 fs.readdirSync(__dirname)
   .filter(function(file) {
     return (
