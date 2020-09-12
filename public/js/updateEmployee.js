@@ -13,14 +13,6 @@ $(document).ready(function() {
   let allEmployees = {};
   let employeeInQuestion;
 
-  // function checkFoodPreference() {
-  //   const foodPreference = $("input[name='food']:checked").val();
-  //   if (foodPreference) {
-  //     console.log(foodPreference);
-  //     return foodPreference;
-  //   }
-  // }
-
   function fillDropdownMenu() {
     $.get("/api/employees").then(function(data) {
       let optionsHTML = ``;
@@ -43,15 +35,12 @@ $(document).ready(function() {
       `${employee.compliance_trainingComplete}`
     );
     if (employee.food_preference === "Vegan") {
-      console.log("this person is vegan");
       $("#vegan").attr("checked", "checked");
     }
     if (employee.food_preference === "Vegetarian") {
-      console.log("this person is veggie");
       $("#vegetarian").attr("checked", "checked");
     }
     if (employee.food_preference === "No Preference") {
-      console.log("this person has no preference ");
       $("#np").attr("checked", "checked");
     }
     employeeInQuestion = employee.id;
@@ -131,7 +120,7 @@ $(document).ready(function() {
     compliance_trainingComplete,
     food_preference
   ) {
-    const apiReference = "/api/employees/" + id;
+    const apiReference = `"/api/employees/${id}"`;
     //logging correctly
     console.log(apiReference);
     $.put(apiReference, {
