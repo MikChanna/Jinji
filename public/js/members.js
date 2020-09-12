@@ -363,4 +363,104 @@ $(document).ready(function() {
     $("#search-results").append(foodchart);
     const ctx = $("#myChart");
   });
+
+  const viewHobbies = $(".hobbies");
+
+  viewHobbies.on("click", function(event) {
+    event.preventDefault();
+    $("#search-results").empty();
+    insertHobbyChart();
+    renderHobbiesHTML();
+  });
+
+  function insertHobbyChart() {
+    $.get("/api/foodie").then(function(data) {
+      const foodie = data.length;
+
+      $.get("/api/outdoors").then(function(data) {
+        const outdoors = data.length;
+        $.get("/api/sports").then(function(data) {
+          const sports = data.length;
+          $.get("/api/art").then(function(data) {
+            const art = data.length;
+            const chart = new Chart(ctx, {
+              type: "doughnut",
+              data: {
+                labels: ["Foodie", "Outdoors", "Sports", "Art"],
+                datasets: [
+                  {
+                    label: "Employees",
+                    backgroundColor: [
+                      "#F1C40F",
+                      "#58D68D",
+                      "#A569BD",
+                      "#E74C3C",
+                    ],
+                    data: [foodie, outdoors, sports, art],
+                  },
+                ],
+              },
+              options: {
+                title: {
+                  display: true,
+                  text: "Hobbies",
+                  fontColor: "white",
+                },
+                legend: {
+                  labels: {
+                    fontColor: "white",
+                  },
+                },
+              },
+            });
+          });
+        });
+      });
+    });
+    const chart = `<canvas id="myChart"></canvas>`;
+    $("#search-results").prepend(chart);
+    const ctx = $("#myChart");
+  }
+
+  function renderHobbiesHTML() {
+    const hobbiesHTML = `<div>
+    <div><h3>Foodie</h3><ul id = "foodiediv"></ul></div>
+    <div><h3>Outdoors</h3><ul id = "outdoorsdiv"></ul></div>
+    <div><h3>Sports</h3><ul id = "sportsdiv"> </ul></div>
+    <div><h3>Art</h3><ul id = "artdiv"></ul></div>
+    </div>`;
+
+    $("#search-results").append(hobbiesHTML);
+    $.get("/api/foodie").then(function(data) {
+      data.forEach(function(employees) {
+        const foodies = `
+          <li>${employees.first_name} ${employees.last_name}</li>`;
+        $("#foodiediv").append(foodies);
+      });
+    });
+
+    $.get("/api/outdoors").then(function(data) {
+      data.forEach(function(employees) {
+        const outdoors = `
+          <li>${employees.first_name} ${employees.last_name}</li>`;
+        $("#outdoorsdiv").append(outdoors);
+      });
+    });
+
+    $.get("/api/sports").then(function(data) {
+      data.forEach(function(employees) {
+        const sports = `
+          <li>${employees.first_name} ${employees.last_name}</li>`;
+        $("#sportsdiv").append(sports);
+      });
+    });
+
+    $.get("/api/art").then(function(data) {
+      data.forEach(function(employees) {
+        const art = `
+          <li>${employees.first_name} ${employees.last_name}</li>`;
+        $("#artdiv").append(art);
+      });
+    });
+  }
 });
