@@ -154,7 +154,6 @@ $(document).ready(function() {
     });
 
     missingOnboardingRequirementsHTML += `</tbody></table>`;
-    console.log(missingOnboardingRequirementsHTML);
     $("#search-results").append(missingOnboardingRequirementsHTML);
   }
 
