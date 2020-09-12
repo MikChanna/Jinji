@@ -66,6 +66,8 @@ module.exports = function(app) {
       orientationComplete: req.body.orientationComplete,
       compliance_trainingComplete: req.body.compliance_trainingComplete,
       food_preference: req.body.food_preference,
+      allergy: req.body.allergy,
+      hobby: req.body.hobby,
     })
       .then(function(user) {
         // user.setAllergies(1);
@@ -91,6 +93,9 @@ module.exports = function(app) {
         hobbyID: req.body.hobbyID,
         orientation: req.body.orientation,
         compliance_training: req.body.compliance_training,
+        food_preference: req.body.food_preference,
+        allergy: req.body.allergy,
+        hobby: req.body.hobby,
       },
       {
         where: {
@@ -134,20 +139,6 @@ module.exports = function(app) {
       res.json(dbEmployee);
     });
   });
-
-  // Route for getting all information Hobby names
-  // app.get("/api/hobbies", function(req, res) {
-  //   db.Hobbies.findAll({}).then(function(dbHobby) {
-  //     res.json(dbHobby);
-  //   });
-  // });
-
-  // Route for getting all information from allergies
-  // app.get("/api/allergies", function(req, res) {
-  //   db.Allergies.findAll({}).then(function(dbAllergy) {
-  //     res.json(dbAllergy);
-  //   });
-  // });
 
   // Route for getting all food preferences
   app.get("/api/veggie", function(req, res) {

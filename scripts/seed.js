@@ -5,7 +5,19 @@ db.sequelize.sync({ force: true }).then(() => {
     db.Employee.create(item);
     console.log("employees created");
   });
+
+  userSeeds.forEach((item) => {
+    db.User.create(item);
+    console.log("guest user created");
+  });
 });
+
+const userSeeds = [
+  {
+    email: "guest@gmail.com",
+    password: "1234",
+  },
+];
 
 const employeeSeeds = [
   {
@@ -31,6 +43,18 @@ const employeeSeeds = [
     food_preference: "Vegan",
     allergy: "Fish",
     hobby: "Foodie",
+  },
+  {
+    first_name: "Taylor",
+    last_name: "Johnson",
+    birthday: "1980-04-17",
+    email: "taylor@gmail.com",
+    hire_date: "2018-07-03",
+    orientationComplete: "2018-07-05",
+    compliance_trainingComplete: "1900-01-01",
+    food_preference: "Vegetarian",
+    allergy: "Nut",
+    hobby: "Sports",
   },
   {
     first_name: "Tyler",
@@ -89,7 +113,7 @@ const employeeSeeds = [
     orientationComplete: "2019-07-20",
     compliance_trainingComplete: "2019-07-30",
     food_preference: "No Preference",
-    allergy: "Nut",
+    allergy: "Soy",
     hobby: "Art",
   },
   {
@@ -101,6 +125,67 @@ const employeeSeeds = [
     orientationComplete: "2019-01-16",
     compliance_trainingComplete: "2019-02-19",
     food_preference: "Vegetarian",
+    allergy: "Shellfish",
+    hobby: "Art",
+  },
+  {
+    first_name: "Jeff",
+    last_name: "Millstone",
+    birthday: "1970-02-28",
+    email: "jeff@gmail.com",
+    hire_date: "2013-06-07",
+    orientationComplete: "2013-07-11",
+    compliance_trainingComplete: "2013-07-12",
+    food_preference: "No Preference",
+    allergy: "Nut",
+    hobby: "Sports",
+  },
+  {
+    first_name: "Channa",
+    last_name: "Mik Carlson",
+    birthday: "1992-01-09",
+    email: "channa@gmail.com",
+    hire_date: "2015-11-29",
+    orientationComplete: "2015-12-02",
+    compliance_trainingComplete: "2015-12-02",
+    food_preference: "No Preference",
+    allergy: "",
+    hobby: "Art",
+  },
+  {
+    first_name: "Lionel",
+    last_name: "Carlson",
+    birthday: "1988-08-12",
+    email: "lionel@gmail.com",
+    hire_date: "2018-08-30",
+    orientationComplete: "2018-09-01",
+    compliance_trainingComplete: "2018-09-01",
+    food_preference: "No Preference",
+    allergy: "Milk",
+    hobby: "Sports",
+  },
+  {
+    first_name: "Rachel",
+    last_name: "Wilson",
+    birthday: "1993-07-15",
+    email: "rachel@gmail.com",
+    hire_date: "2019-07-12",
+    orientationComplete: "2019-07-20",
+    compliance_trainingComplete: "2019-07-30",
+    food_preference: "No Preference",
+    allergy: "Soy",
+    hobby: "Art",
+  },
+  {
+    first_name: "Sierra",
+    last_name: "Jacobs",
+    birthday: "1990-02-18",
+    email: "Sierra@gmail.com",
+    hire_date: "2020-09-01",
+    orientationComplete: "1900-01-01",
+    compliance_trainingComplete: "1900-01-01",
+    food_preference: "No Preference",
+    allergy: "",
     hobby: "Art",
   },
 ];

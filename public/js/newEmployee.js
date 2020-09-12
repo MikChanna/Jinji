@@ -67,8 +67,7 @@ $(document).ready(function() {
     email,
     hire_date,
     orientationComplete,
-    compliance_trainingComplete,
-    food_preference
+    compliance_trainingComplete
   ) {
     $.post("api/employees", {
       first_name: first_name,
@@ -78,8 +77,9 @@ $(document).ready(function() {
       hire_date: hire_date,
       orientationComplete: orientationComplete,
       compliance_trainingComplete: compliance_trainingComplete,
-      food_preference: radiocheck(),
+      food_preference: checkFood(),
       allergy: checkAllergy(),
+      hobby: checkHobby(),
     })
       .then(function(data) {
         window.location.replace("/members");
@@ -92,11 +92,11 @@ $(document).ready(function() {
     console.log(err.responseJSON);
   }
 
-  function radiocheck() {
-    const foodpref = $("input[name='food']:checked").val();
-    if (foodpref) {
-      console.log(foodpref);
-      return foodpref;
+  function checkFood() {
+    const food = $("input[name='food']:checked").val();
+    if (food) {
+      console.log(food);
+      return food;
     }
   }
   function checkAllergy() {
@@ -104,6 +104,14 @@ $(document).ready(function() {
     if (allergy) {
       console.log(allergy);
       return allergy;
+    }
+  }
+
+  function checkHobby() {
+    const hobby = $("input[name='hobby']:checked").val();
+    if (hobby) {
+      console.log(hobby);
+      return hobby;
     }
   }
 });

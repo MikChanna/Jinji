@@ -53,12 +53,32 @@
             <textarea id = "orientationComplete" type ="date"></textarea>
             <label for="compliance_trainingComplete">Compliance Training Complete Date</label>
             <textarea id = "compliance_trainingComplete" type ="date"></textarea>
-                  <span id="foodpref">
-                    Food Preference:<br>
-                    <input type="radio" name="food" value="Vegetarian" id="veggie">Vegetarian<br>
-                    <input type="radio" name="food" value="Vegan" id="vegan">Vegan<br>
-                    <input type="radio" name="food" value="No Preference" id="np">No Preference<br>
-                </span>
+            <div class="row">
+              <span class= "column" id="foodpref">
+                Food Preference:<br>
+                <input type="radio" name="food" value="Vegetarian" id="veggie">Vegetarian<br>
+                <input type="radio" name="food" value="Vegan" id="vegan">Vegan<br>
+                <input type="radio" name="food" value="No Preference" id="np">No Preference<br>
+            </span>
+            <span class= "column" id="allergies">
+                Allergies:<br>
+                <input type="radio" name="allergy" value="Nut" id="nut">Nut<br>
+                <input type="radio" name="allergy" value="Milk" id="milk">Milk<br>
+                <input type="radio" name="allergy" value="Soy" id="soy">Soy<br>
+                <input type="radio" name="allergy" value="Fish" id="fish">Fish<br>
+                <input type="radio" name="allergy" value="Shellfish" id="shellfish">Shellfish<br>
+
+            </span>
+            <span class= "column" id="hobbies">
+                Hobbies:<br>
+                <input type="radio" name="hobby" value="Foodie" id ="foodie" >Foodie<br>
+                <input type="radio" name="hobby" value="Outdoors" id ="outdoors">Outdoors<br>
+                <input type="radio" name="hobby" value="Sports" id ="sports">Sports<br>
+                <input type="radio" name="hobby" value="Art" id ="art">Art<br>
+            
+            </span>
+          </div>
+
 
                 <button type="submit" class="button button-outline updateEmployeeButton">Update Employee</button>
 

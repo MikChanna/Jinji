@@ -43,6 +43,33 @@ $(document).ready(function() {
     if (employee.food_preference === "No Preference") {
       $("#np").attr("checked", "checked");
     }
+    if (employee.allergy === "Nut") {
+      $("#nut").attr("checked", "checked");
+    }
+    if (employee.allergy === "Milk") {
+      $("#milk").attr("checked", "checked");
+    }
+    if (employee.allergy === "Nut") {
+      $("#nut").attr("checked", "checked");
+    }
+    if (employee.allergy === "Fish") {
+      $("#fish").attr("checked", "checked");
+    }
+    if (employee.allergy === "Shellfish") {
+      $("#shellfish").attr("checked", "checked");
+    }
+    if (employee.hobby === "Sports") {
+      $("#sports").attr("checked", "checked");
+    }
+    if (employee.hobby === "Art") {
+      $("#art").attr("checked", "checked");
+    }
+    if (employee.hobby === "Outdoors") {
+      $("#outdoors").attr("checked", "checked");
+    }
+    if (employee.hobby === "Foodie") {
+      $("#foodie").attr("checked", "checked");
+    }
     employeeInQuestion = employee.id;
   }
 
@@ -114,8 +141,7 @@ $(document).ready(function() {
     email,
     hire_date,
     orientationComplete,
-    compliance_trainingComplete,
-    food_preference
+    compliance_trainingComplete
   ) {
     const apiReference = "/api/employees/" + employeeInQuestion;
 
@@ -130,39 +156,35 @@ $(document).ready(function() {
         hire_date: hire_date,
         orientationComplete: orientationComplete,
         compliance_trainingComplete: compliance_trainingComplete,
-        food_preference: radiocheck(),
+        food_preference: radiocheckFood(),
+        allergy: radiocheckAllergy(),
+        hobby: radiocheckHobby(),
       },
     }).then(function() {
       console.log("successfully updated employee");
       window.location.replace("/members");
     });
-
-    //   $.put(apiReference, {
-    //   first_name: first_name,
-    //   last_name: last_name,
-    //   birthday: birthday,
-    //   email: email,
-    //   hire_date: hire_date,
-    //   orientationComplete: orientationComplete,
-    //   compliance_trainingComplete: compliance_trainingComplete,
-    //   food_preference: radiocheck(),
-    // })
-    //   .then(function(data) {
-    //     window.location.replace("/members");
-    //     console.log("employee updated");
-    //   })
-    //   .catch(updateEmployeeError);
   }
 
-  function updateEmployeeError(err) {
-    console.log(err.responseJSON);
-  }
-
-  function radiocheck() {
+  function radiocheckFood() {
     const foodpref = $("input[name='food']:checked").val();
     if (foodpref) {
       console.log(foodpref);
       return foodpref;
+    }
+  }
+  function radiocheckAllergy() {
+    const allergypref = $("input[name='allergy']:checked").val();
+    if (allergypref) {
+      console.log(allergypref);
+      return allergypref;
+    }
+  }
+  function radiocheckHobby() {
+    const hobbypref = $("input[name='hobby']:checked").val();
+    if (hobbypref) {
+      console.log(hobbypref);
+      return hobbypref;
     }
   }
 });
