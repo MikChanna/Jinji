@@ -231,4 +231,44 @@ module.exports = function(app) {
       res.json(data);
     });
   });
+
+  app.get("/api/foodie", function(req, res) {
+    db.Employee.findAll({
+      where: {
+        hobby: "Foodie",
+      },
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  app.get("/api/outdoors", function(req, res) {
+    db.Employee.findAll({
+      where: {
+        hobby: "Outdoors",
+      },
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  app.get("/api/Sports", function(req, res) {
+    db.Employee.findAll({
+      where: {
+        hobby: "Sports",
+      },
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  app.get("/api/Art", function(req, res) {
+    db.Employee.findAll({
+      where: {
+        hobby: "Art",
+      },
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
 };
