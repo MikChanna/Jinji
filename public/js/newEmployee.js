@@ -98,6 +98,7 @@ $(document).ready(function() {
       console.log(food);
       return food;
     }
+    return "";
   }
   function checkAllergy() {
     const allergy = $("input[name='allergy']:checked").val();
@@ -105,6 +106,7 @@ $(document).ready(function() {
       console.log(allergy);
       return allergy;
     }
+    return "";
   }
 
   function checkHobby() {
@@ -113,5 +115,6 @@ $(document).ready(function() {
       console.log(hobby);
       return hobby;
     }
+    return "";
   }
 });
