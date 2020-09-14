@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "406Halogen",
-    "database": "jinji",
-    "host": "127.0.0.1",
+    "username": "y96wuynfkmy0g809",
+    "password": "es8v5avpcar93bpl",
+    "database": "lyo536k89p58jn5r",
+    "host": "w1h4cr5sb73o944p.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
